@@ -1,0 +1,39 @@
+[gd_scene load_steps=5 format=2]
+
+[ext_resource path="res://Scripts/snake.gd" type="Script" id=1]
+[ext_resource path="res://Assets/Snake/snake-head.png" type="Texture" id=2]
+[ext_resource path="res://Assets/Button Texture/Dark Grey.PNG" type="Texture" id=3]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 25.4452, 25.1362 )
+
+[node name="CanvasLayer" type="CanvasLayer"]
+
+[node name="Control" type="Control" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+margin_left = 1.25995
+margin_right = 1025.26
+margin_bottom = 600.0
+texture = ExtResource( 3 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Snake" type="Node2D" parent="Control"]
+position = Vector2( 200, 200 )
+script = ExtResource( 1 )
+
+[node name="head" type="Area2D" parent="Control/Snake"]
+
+[node name="Sprite" type="Sprite" parent="Control/Snake/head"]
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Control/Snake/head"]
+position = Vector2( -0.235962, 0 )
+shape = SubResource( 1 )
