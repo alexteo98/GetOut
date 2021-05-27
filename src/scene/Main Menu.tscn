@@ -43,7 +43,7 @@ margin_right = 400.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="Label" type="Label" parent="Main Menu/VBoxContainer"]
+[node name="lblMainMenu" type="Label" parent="Main Menu/VBoxContainer"]
 margin_top = 24.0
 margin_right = 400.0
 margin_bottom = 59.0
@@ -59,7 +59,7 @@ margin_right = 400.0
 margin_bottom = 83.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="TextureButton" type="TextureButton" parent="Main Menu/VBoxContainer"]
+[node name="btnNewGame" type="TextureButton" parent="Main Menu/VBoxContainer"]
 margin_top = 87.0
 margin_right = 400.0
 margin_bottom = 137.0
@@ -68,7 +68,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="Main Menu/VBoxContainer/TextureButton"]
+[node name="lblNewGame" type="Label" parent="Main Menu/VBoxContainer/btnNewGame"]
 margin_right = 400.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 0, 50 )
@@ -80,7 +80,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton2" type="TextureButton" parent="Main Menu/VBoxContainer"]
+[node name="btnOptions" type="TextureButton" parent="Main Menu/VBoxContainer"]
 margin_top = 141.0
 margin_right = 400.0
 margin_bottom = 191.0
@@ -89,7 +89,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="Main Menu/VBoxContainer/TextureButton2"]
+[node name="lblOptions" type="Label" parent="Main Menu/VBoxContainer/btnOptions"]
 margin_right = 400.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 0, 50 )
@@ -101,7 +101,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TextureButton3" type="TextureButton" parent="Main Menu/VBoxContainer"]
+[node name="btnExit" type="TextureButton" parent="Main Menu/VBoxContainer"]
 margin_top = 195.0
 margin_right = 400.0
 margin_bottom = 245.0
@@ -110,7 +110,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="Main Menu/VBoxContainer/TextureButton3"]
+[node name="lblExit" type="Label" parent="Main Menu/VBoxContainer/btnExit"]
 margin_right = 400.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 0, 50 )
@@ -124,6 +124,6 @@ __meta__ = {
 
 [node name="SFX-mouseClick" parent="Main Menu" instance=ExtResource( 6 )]
 
-[connection signal="pressed" from="Main Menu/VBoxContainer/TextureButton" to="Main Menu" method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="Main Menu/VBoxContainer/TextureButton2" to="Main Menu" method="_on_TextureButton2_pressed"]
-[connection signal="pressed" from="Main Menu/VBoxContainer/TextureButton3" to="Main Menu" method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="Main Menu/VBoxContainer/btnNewGame" to="Main Menu" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="Main Menu/VBoxContainer/btnOptions" to="Main Menu" method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="Main Menu/VBoxContainer/btnExit" to="Main Menu" method="_on_TextureButton3_pressed"]
