@@ -1,5 +1,6 @@
 extends Control
 
+signal close_settings
 
 # Declare member variables here. Examples:
 # var a = 2
@@ -30,7 +31,8 @@ func _ready():
 func _on_TextureButton_pressed():
 	$SFX.play()
 	yield(get_tree().create_timer(delay), "timeout")
-	get_tree().change_scene("res://src/scene/Main Menu.tscn")
+	emit_signal("close_settings")
+	#get_tree().change_scene("res://src/scene/Main Menu.tscn")
 
 func _on_CheckButton2_toggled(button_pressed):
 	$SFX.play()

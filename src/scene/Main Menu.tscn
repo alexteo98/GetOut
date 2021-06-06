@@ -122,8 +122,9 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFX-mouseClick" parent="Main Menu" instance=ExtResource( 6 )]
+[node name="SFX" parent="Main Menu" instance=ExtResource( 6 )]
 
+[connection signal="play_mouseclick" from="Main Menu" to="Main Menu/SFX" method="_on_Main_Menu_play_mouseclick"]
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnNewGame" to="Main Menu" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnOptions" to="Main Menu" method="_on_TextureButton2_pressed"]
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnExit" to="Main Menu" method="_on_TextureButton3_pressed"]
