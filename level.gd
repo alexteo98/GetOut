@@ -4,6 +4,7 @@ var curr_score = 0
 
 onready var food = preload("res://src/scene/food.tscn") 
 onready var wall = preload("res://src/scene/snake walls.tscn")
+onready var snake = preload("res://src/scene/snake.tscn")
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -13,6 +14,7 @@ onready var wall = preload("res://src/scene/snake walls.tscn")
 func _ready():
 	var walls = wall.instance() 
 	walls.connect("wall_collision",self,"end_game")
+	snake.connect("tail_collision",self,"end_game")
 	add_child(walls)
 	add_food()
 	pass # Replace with function body.
@@ -38,3 +40,8 @@ func spawn_new():
 func end_game():
 	print("game ended")
 	get_tree().reload_current_scene()
+
+
+func _on_snake_tail_collision():
+	end_game()
+	pass # Replace with function body.

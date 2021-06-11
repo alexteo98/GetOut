@@ -7,7 +7,7 @@ var next_tail_dir = Vector2(speed,0)
 var prev_dir = Vector2(speed,0)
 
 onready var tail = preload("res://src/scene/tail.tscn")
-
+signal tail_collision
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -15,8 +15,12 @@ onready var tail = preload("res://src/scene/tail.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	
 	pass # Replace with function body.
 
+func end_game():
+	print("snake collision")
+	emit_signal("tail_collision")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
@@ -60,3 +64,4 @@ func add_tail():
 		inst.curr_dir = direction
 		inst.position = prev_tail.position + (direction * gap / speed)
 	add_child(inst)
+	inst.connect("tail_collision",self,"end_game")

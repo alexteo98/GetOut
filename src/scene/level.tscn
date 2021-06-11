@@ -21,3 +21,5 @@ __meta__ = {
 }
 
 [node name="walls" parent="." instance=ExtResource( 3 )]
+
+[connection signal="tail_collision" from="snake" to="." method="_on_snake_tail_collision"]

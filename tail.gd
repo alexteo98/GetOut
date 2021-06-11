@@ -4,7 +4,7 @@ var curr_dir = Vector2(0,0)
 var directions = []
 var pos_array = []
 
-signal wall_collision
+signal tail_collision
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -31,5 +31,5 @@ func _on_tail_area_entered(area):
 	if (area.name == "head"):
 		#get_tree().reload_current_scene()
 		print("collided with head")
-		emit_signal("wall_collision")
+		emit_signal("tail_collision")
 	pass # Replace with function body.
