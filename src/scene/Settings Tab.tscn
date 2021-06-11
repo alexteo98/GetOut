@@ -1,14 +1,13 @@
-[gd_scene load_steps=6 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://Assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=3]
 [ext_resource path="res://src/script/Control.gd" type="Script" id=4]
 [ext_resource path="res://src/scene/SFX.tscn" type="PackedScene" id=5]
+[ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=6]
 
-[node name="CanvasLayer" type="CanvasLayer"]
-
-[node name="Control" type="Control" parent="."]
+[node name="Control" type="Control"]
 margin_right = 1024.0
 margin_bottom = 600.0
 script = ExtResource( 4 )
@@ -16,14 +15,15 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="NinePatchRect" type="NinePatchRect" parent="Control"]
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
+texture = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="Control"]
+[node name="MarginContainer" type="MarginContainer" parent="."]
 margin_right = 1024.0
 margin_bottom = 20.0
 rect_min_size = Vector2( 1024, 20 )
@@ -31,7 +31,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label" type="Label" parent="Control"]
+[node name="Label" type="Label" parent="."]
 margin_left = 312.0
 margin_top = 20.0
 margin_right = 712.0
@@ -45,7 +45,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control"]
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
 margin_left = 112.0
 margin_top = 70.0
 margin_right = 946.0
@@ -55,27 +55,27 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer"]
 margin_right = 834.0
 margin_bottom = 254.0
 rect_min_size = Vector2( 200, 200 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 margin_right = 834.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 800, 200 )
 
-[node name="VBoxContainer" type="VBoxContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_right = 200.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 200, 200 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_right = 200.0
 margin_bottom = 10.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 14.0
 margin_right = 200.0
 margin_bottom = 49.0
@@ -83,19 +83,19 @@ custom_fonts/font = ExtResource( 1 )
 text = "Audio Settings"
 valign = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 53.0
 margin_right = 200.0
 margin_bottom = 63.0
 rect_min_size = Vector2( 0, 10 )
 
-[node name="Label2" type="Label" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label2" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 67.0
 margin_right = 200.0
 margin_bottom = 81.0
 text = "Master Volume (100%)"
 
-[node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 85.0
 margin_right = 200.0
 margin_bottom = 105.0
@@ -104,7 +104,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="Label3" type="Label" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label3" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 109.0
 margin_right = 200.0
 margin_bottom = 123.0
@@ -113,13 +113,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer4" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 127.0
 margin_right = 200.0
 margin_bottom = 147.0
 rect_min_size = Vector2( 0, 20 )
 
-[node name="Label4" type="Label" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
+[node name="Label4" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer"]
 margin_top = 151.0
 margin_right = 200.0
 margin_bottom = 165.0
@@ -128,24 +128,24 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer2" type="VBoxContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer2" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 204.0
 margin_right = 754.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 550, 0 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_right = 550.0
 margin_bottom = 55.0
 rect_min_size = Vector2( 0, 55 )
 
-[node name="HSlider" type="HSlider" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HSlider" type="HSlider" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 59.0
 margin_right = 550.0
 margin_bottom = 75.0
 value = 100.0
 
-[node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 79.0
 margin_right = 550.0
 margin_bottom = 99.0
@@ -154,13 +154,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSlider2" type="HSlider" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HSlider2" type="HSlider" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 103.0
 margin_right = 550.0
 margin_bottom = 119.0
 value = 100.0
 
-[node name="MarginContainer4" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="MarginContainer4" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 123.0
 margin_right = 550.0
 margin_bottom = 143.0
@@ -169,35 +169,35 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HSlider3" type="HSlider" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
+[node name="HSlider3" type="HSlider" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2"]
 margin_top = 147.0
 margin_right = 550.0
 margin_bottom = 163.0
 value = 100.0
 
-[node name="VBoxContainer3" type="VBoxContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer"]
+[node name="VBoxContainer3" type="VBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer"]
 margin_left = 758.0
 margin_right = 834.0
 margin_bottom = 200.0
 rect_min_size = Vector2( 50, 0 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_right = 76.0
 margin_bottom = 40.0
 rect_min_size = Vector2( 0, 40 )
 
-[node name="CheckButton" type="CheckButton" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="CheckButton" type="CheckButton" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 44.0
 margin_right = 76.0
 margin_bottom = 84.0
 pressed = true
 
-[node name="MarginContainer2" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="MarginContainer2" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 88.0
 margin_right = 76.0
 margin_bottom = 88.0
 
-[node name="CheckButton2" type="CheckButton" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="CheckButton2" type="CheckButton" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 92.0
 margin_right = 76.0
 margin_bottom = 132.0
@@ -206,7 +206,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer3" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="MarginContainer3" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 136.0
 margin_right = 76.0
 margin_bottom = 136.0
@@ -214,29 +214,29 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="CheckButton3" type="CheckButton" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
+[node name="CheckButton3" type="CheckButton" parent="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3"]
 margin_top = 140.0
 margin_right = 76.0
 margin_bottom = 180.0
 pressed = true
 
-[node name="HBoxContainer2" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer"]
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer/VBoxContainer"]
 margin_top = 204.0
 margin_right = 834.0
 margin_bottom = 254.0
 rect_min_size = Vector2( 0, 50 )
 
-[node name="HBoxContainer" type="HBoxContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer2"]
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer2"]
 margin_right = 804.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 804, 0 )
 
-[node name="MarginContainer" type="MarginContainer" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 margin_right = 500.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 500, 0 )
 
-[node name="TextureButton" type="TextureButton" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer"]
 margin_left = 504.0
 margin_right = 704.0
 margin_bottom = 50.0
@@ -245,7 +245,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="Control/VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/TextureButton"]
+[node name="Label" type="Label" parent="VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/TextureButton"]
 margin_right = 40.0
 margin_bottom = 14.0
 rect_min_size = Vector2( 200, 50 )
@@ -257,12 +257,12 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="SFX" parent="Control" instance=ExtResource( 5 )]
+[node name="SFX" parent="." instance=ExtResource( 5 )]
 
-[connection signal="value_changed" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="Control" method="_on_HSlider_value_changed"]
-[connection signal="value_changed" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider2" to="Control" method="_on_HSlider2_value_changed"]
-[connection signal="value_changed" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider3" to="Control" method="_on_HSlider3_value_changed"]
-[connection signal="toggled" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/CheckButton" to="Control" method="_on_CheckButton_toggled"]
-[connection signal="toggled" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/CheckButton2" to="Control" method="_on_CheckButton2_toggled"]
-[connection signal="toggled" from="Control/VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/CheckButton3" to="Control" method="_on_CheckButton3_toggled"]
-[connection signal="pressed" from="Control/VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/TextureButton" to="Control" method="_on_TextureButton_pressed"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="." method="_on_HSlider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider2" to="." method="_on_HSlider2_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider3" to="." method="_on_HSlider3_value_changed"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/CheckButton" to="." method="_on_CheckButton_toggled"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/CheckButton2" to="." method="_on_CheckButton2_toggled"]
+[connection signal="toggled" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer3/CheckButton3" to="." method="_on_CheckButton3_toggled"]
+[connection signal="pressed" from="VBoxContainer/VBoxContainer/HBoxContainer2/HBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
