@@ -36,6 +36,7 @@ func _process(delta):
 	elif (Input.is_action_pressed("ui_right")):
 		direction = Vector2(speed,0)
 		pass
+	
 	moveSnake()
 	pass
 

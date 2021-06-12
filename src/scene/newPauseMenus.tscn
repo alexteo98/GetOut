@@ -1,14 +1,17 @@
-[gd_scene load_steps=5 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=4]
+[ext_resource path="res://src/scene/newPauseMenus.gd" type="Script" id=5]
+[ext_resource path="res://src/scene/Settings Tab.tscn" type="PackedScene" id=6]
 
 [node name="Control" type="NinePatchRect"]
 anchor_right = 1.0
 anchor_bottom = 1.0
 rect_min_size = Vector2( 1024, 600 )
+script = ExtResource( 5 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -108,8 +111,8 @@ texture_pressed = ExtResource( 3 )
 expand = true
 
 [node name="Label" type="Label" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton"]
-margin_right = 40.0
-margin_bottom = 14.0
+margin_right = 300.0
+margin_bottom = 50.0
 rect_min_size = Vector2( 300, 50 )
 custom_fonts/font = ExtResource( 1 )
 text = "Resume"
@@ -205,3 +208,12 @@ margin_left = 378.0
 margin_right = 408.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 30, 0 )
+
+[node name="Control" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]
+[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
+[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton4" to="." method="_on_TextureButton4_pressed"]
+[connection signal="close_settings" from="Control" to="." method="_on_Control_close_settings"]

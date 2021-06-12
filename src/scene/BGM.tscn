@@ -3,6 +3,7 @@
 [ext_resource path="res://assets/Sounds/BGM.wav" type="AudioStream" id=1]
 
 [node name="BGM" type="AudioStreamPlayer"]
+pause_mode = 2
 stream = ExtResource( 1 )
 autoplay = true
 bus = "BGM"

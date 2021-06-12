@@ -1,6 +1,8 @@
 extends Node2D
 
 var curr_score = 0
+var paused = false
+
 
 onready var food = preload("res://src/scene/food.tscn") 
 onready var wall = preload("res://src/scene/snake walls.tscn")
@@ -10,8 +12,11 @@ onready var snake = preload("res://src/scene/snake.tscn")
 # var b = "text"
 
 
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	$Control.hide()
+	paused = false
 	var walls = wall.instance() 
 	walls.connect("wall_collision",self,"end_game")
 	snake.connect("tail_collision",self,"end_game")
@@ -19,10 +24,28 @@ func _ready():
 	add_food()
 	pass # Replace with function body.
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
+	if (Input.is_action_pressed("ui_cancel")):
+		if (paused == true):
+			resumeGame()
+		else:
+			pauseGame()
 	$score.text = "Score: " + str(curr_score)
+	pass
+
+func pauseGame():
+	$Control.show()
+	$Control.raise()
+	get_node("snake").get_tree().paused = true
+	#$snake.get_tree().paused = true
+	paused = true
+	pass
+
+func resumeGame():
+	$Control.hide()
+	get_node("snake").get_tree().paused = false
+	paused = false
 	pass
 
 func add_food():
@@ -44,4 +67,9 @@ func end_game():
 
 func _on_snake_tail_collision():
 	end_game()
+	pass # Replace with function body.
+
+
+func _on_Control_resumeGame():
+	resumeGame()
 	pass # Replace with function body.
