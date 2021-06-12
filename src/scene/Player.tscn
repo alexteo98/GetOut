@@ -4,7 +4,7 @@
 [ext_resource path="res://src/script/Player.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 17.2726
+radius = 8.28748
 
 [sub_resource type="Animation" id=2]
 loop = true
@@ -27,7 +27,7 @@ position = Vector2( 50, 50 )
 script = ExtResource( 2 )
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2( 12.6135, -9.67031 )
+position = Vector2( 4.59541, -1.20677 )
 shape = SubResource( 1 )
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -35,8 +35,8 @@ root_node = NodePath("../AnimatedSprite")
 anims/Walk = SubResource( 2 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 13.0339, -11.5623 )
-scale = Vector2( 2.62924, 2.44529 )
+position = Vector2( 3.45674, -3.09876 )
+scale = Vector2( 1.4321, 1.38735 )
 texture = ExtResource( 1 )
 hframes = 8
 vframes = 6

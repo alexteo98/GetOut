@@ -8,7 +8,7 @@ const W = 8
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
 
-var tile_size = 64  # tile size (in pixels)
+var tile_size = 25  # tile size (in pixels)
 var width = 40  # width of map (in tiles)
 var height = 24  # height of map (in tiles)
 
@@ -21,8 +21,8 @@ var erase_fraction = 0.2
 onready var Map = $TileMap
 
 func _ready():
-	$Camera2D.zoom = Vector2(3, 3)
-	$Camera2D.position = Map.map_to_world(Vector2(width/2, height/2))
+	$Camera2D.zoom = Vector2(2.5, 2.5)
+	$Camera2D.position = Map.map_to_world(Vector2(width/2+4, height/2+2.5))
 	randomize()
 	if !map_seed:
 		map_seed = randi()
@@ -96,3 +96,12 @@ func erase_walls():
 			else:
 				Map.set_cellv(cell+neighbor/2, 10)
 		#yield(get_tree(), 'idle_frame')
+
+func _process(delta):
+	if (Input.is_action_pressed("ui_cancel")):
+		if ($pauseMenu.visible == true):
+			$pauseMenu.visible == false
+			pass
+		else:
+			$pauseMenu.visible == true
+			pass
