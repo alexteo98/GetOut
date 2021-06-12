@@ -126,6 +126,7 @@ __meta__ = {
 [node name="SFX-mouseClick" parent="Main Menu" instance=ExtResource( 6 )]
 
 [node name="Settings" parent="Main Menu" instance=ExtResource( 7 )]
+visible = false
 
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnNewGame" to="Main Menu" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnOptions" to="Main Menu" method="_on_TextureButton2_pressed"]

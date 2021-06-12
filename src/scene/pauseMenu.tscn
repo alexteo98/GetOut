@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=2]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=4]
-[ext_resource path="res://src/scene/pauseMenu.gd" type="Script" id=5]
+[ext_resource path="res://src/script/pauseMenu.gd" type="Script" id=5]
 [ext_resource path="res://src/scene/SFX.tscn" type="PackedScene" id=6]
 
 [node name="pauseMenu" type="Control"]
