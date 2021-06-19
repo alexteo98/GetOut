@@ -34,9 +34,12 @@ Players will spawn in their home base and attempt to find and complete as many m
     * Which will increasing the score of the puzzles
 * Energy bar system
     * Which will deplete when player runs
-    * Restore when player returns to base
+    * Energy can be restored when the player picks up consumables
+* Pickups and consumables
+    * Treasure chests are located around the map that contains consumables that can increase the high scores or increase the energy levels
+    * The player may need time to open the chests that leaves them vulnerable to the monsters
 * Score keeping system (high score)
-    Keep track of how well player is performing 
+    * Keep track of how well player is performing 
 * Monsters
     * Detect and chase after player
     * Should monster catch up with player, player will have high score deducted
