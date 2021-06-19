@@ -1,11 +1,13 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://src/script/Maze.gd" type="Script" id=1]
 [ext_resource path="res://assets/Map/road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://src/scene/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scene/Monster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/script/Monster.gd" type="Script" id=5]
-[ext_resource path="res://src/scene/pauseMenu.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scene/Settings Tab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scene/newPauseMenus.tscn" type="PackedScene" id=7]
+[ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=8]
 
 [node name="Maze" type="Node2D"]
 script = ExtResource( 1 )
@@ -23,9 +25,28 @@ current = true
 drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
-[node name="Sprite" parent="." instance=ExtResource( 3 )]
+[node name="Player" parent="." instance=ExtResource( 3 )]
 
 [node name="Monster" parent="." instance=ExtResource( 4 )]
 script = ExtResource( 5 )
 
-[node name="pauseMenu" parent="." instance=ExtResource( 6 )]
+[node name="pauseMenu" parent="." instance=ExtResource( 7 )]
+visible = false
+margin_left = 780.0
+margin_right = 1804.0
+margin_bottom = 600.0
+
+[node name="Control" parent="." instance=ExtResource( 6 )]
+visible = false
+
+[node name="Label" type="Label" parent="."]
+margin_right = 75.0
+margin_bottom = 14.0
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = ExtResource( 8 )
+text = "Energy left: "
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="resumeGame" from="pauseMenu" to="." method="_on_pauseMenu_resumeGame"]

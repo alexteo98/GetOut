@@ -5,8 +5,12 @@ const E = 2
 const S = 4
 const W = 8
 
+onready var chest = preload("res://src/scene/red-chest.tscn")
+
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
+				
+var spawns=[]
 
 var tile_size = 25  # tile size (in pixels)
 var width = 40  # width of map (in tiles)
@@ -31,6 +35,7 @@ func _ready():
 	tile_size = Map.cell_size
 	make_maze()
 	erase_walls()
+	spawnChests()
 	
 func check_neighbors(cell, unvisited):
 	# returns an array of cell's unvisited neighbors
@@ -86,6 +91,7 @@ func erase_walls():
 		var neighbor = cell_walls.keys()[randi() % cell_walls.size()]
 		# if there's a wall between them, remove it
 		if Map.get_cellv(cell) & cell_walls[neighbor]:
+			spawns.append(cell)
 			var walls = Map.get_cellv(cell) - cell_walls[neighbor]
 			var n_walls = Map.get_cellv(cell+neighbor) - cell_walls[-neighbor]
 			Map.set_cellv(cell, walls)
@@ -99,9 +105,26 @@ func erase_walls():
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_cancel")):
-		if ($pauseMenu.visible == true):
-			$pauseMenu.visible == false
-			pass
-		else:
-			$pauseMenu.visible == true
-			pass
+		$pauseMenu.show()
+
+func _on_pauseMenu_resumeGame():
+	$pauseMenu.hide()
+	pass # Replace with function body.
+
+func updateEnergy(energyLeft):
+	$Label.text = "Energy Left: " + str(energyLeft)
+	
+func spawnChests():
+	# number of boxes to spawn
+	var spawnItems = 10
+	for i in range (0,spawnItems):
+		var j =rand_range(0,spawns.size()-1)
+		var inst = chest.instance()
+		inst.position = spawns[j] * 64 - Vector2(-32,-32)
+		spawns.remove(j)
+		add_child(inst)
+		inst.connect("pickedUpRed",self,"increaseEnergy")
+	pass
+
+func increaseEnergy():
+	$Player.energy+=30

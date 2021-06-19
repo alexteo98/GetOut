@@ -36,7 +36,7 @@ func _on_TextureButton3_pressed():
 func _on_TextureButton_pressed():
 	$"SFX-mouseClick".play()
 	yield(get_tree().create_timer(delay), "timeout")
-	get_tree().change_scene("res://src/scene/level.tscn")
+	get_tree().change_scene("res://src/scene/Maze.tscn")
 	
 func _wait(time):
 	yield(get_tree().create_timer(time), "timeout")
