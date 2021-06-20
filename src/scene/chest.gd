@@ -1,7 +1,5 @@
 extends Area2D
 
-signal pickedUpRed
-
 # Declare member variables here. Examples:
 # var a = 2
 # var b = "text"
@@ -15,12 +13,25 @@ func _ready():
 #	pass
 
 func removeChest():
-	remove_child(self)
+	get_parent().remove_child(self)
 	pass
 
 func _on_redchest_body_entered(body):
 	if body.name == "Player":
-		queue_free()
 		removeChest()
 		body.increaseEnergy(30)
 
+func _on_greenchest_body_entered(body):
+	if body.name == "Player":
+		removeChest()
+		body.getShield()
+
+func _on_yellowchest_body_entered(body):
+	if body.name == "Player":
+		removeChest()
+		body.increaseScore(50)
+
+func _on_bluechest_body_exited(body):
+	if body.name == "Player":
+		removeChest()
+		body.increaseBaseSpd()

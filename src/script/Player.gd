@@ -5,7 +5,10 @@ var run: bool = false
 var basicspeed = 4
 var speed = basicspeed
 var energy = 100
+var energyCap = 150
+var shieldCount = 0
 const energyDecrement = 0.5
+const energyIncrement = 0.1
 var direction = Vector2()
 # Declare member variables here. Examples:
 # var a = 2
@@ -23,6 +26,7 @@ func _process(delta):
 	else:
 		speed = basicspeed
 		
+	recoverEnergy()
 	
 	if (Input.is_action_pressed("ui_up")):
 		direction = Vector2(0,speed * -1)
@@ -61,3 +65,20 @@ func _process(delta):
 
 func increaseEnergy(amt):
 	energy+=amt
+	if energy >= energyCap:
+		energy = energyCap
+
+func increaseBaseSpd():
+	basicspeed += 1
+
+func increaseScore(incr):
+	get_parent().increaseScore(incr)
+	
+func getShield():
+	shieldCount += 1
+
+func recoverEnergy():
+	if (energy < energyCap):
+		energy+=energyIncrement
+		if (energy >= energyCap):
+			energy = energyCap

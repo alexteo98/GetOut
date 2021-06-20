@@ -5,7 +5,16 @@ const E = 2
 const S = 4
 const W = 8
 
-onready var chest = preload("res://src/scene/red-chest.tscn")
+var score = 0
+const SHIELD = 2
+const GOLD = 2
+const SHOES = 1
+const ENERGY_POT = 3
+const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT]
+onready var redChest = preload("res://src/scene/red-chest.tscn")
+onready var blueChest = preload("res://src/scene/blue-chest.tscn")
+onready var greenChest = preload("res://src/scene/green-chest.tscn")
+onready var yellowChest = preload("res://src/scene/yellow-chest.tscn")
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
@@ -25,6 +34,7 @@ var erase_fraction = 0.2
 onready var Map = $TileMap
 
 func _ready():
+	$EnergyBar.max_value = get_node("Player").energyCap
 	$Camera2D.zoom = Vector2(2.5, 2.5)
 	$Camera2D.position = Map.map_to_world(Vector2(width/2+4, height/2+2.5))
 	randomize()
@@ -104,6 +114,7 @@ func erase_walls():
 		#yield(get_tree(), 'idle_frame')
 
 func _process(delta):
+	#updateScore(score)
 	if (Input.is_action_pressed("ui_cancel")):
 		$pauseMenu.show()
 
@@ -112,20 +123,38 @@ func _on_pauseMenu_resumeGame():
 	pass # Replace with function body.
 
 func updateEnergy(energyLeft):
-	$Label.text = "Energy Left: " + str(energyLeft)
+	$EnergyLbl.text = "Energy Left: " + str(energyLeft)
+	$EnergyBar.value = energyLeft
+	
+func updateScore(newScore):
+	$ScoreLbl.text = "Score: " + str(newScore)
+
+func increaseScore(incr):
+	print("incr score" + str(incr))
+	score += incr
+	updateScore(score)
 	
 func spawnChests():
 	# number of boxes to spawn
-	var spawnItems = 10
-	for i in range (0,spawnItems):
-		var j =rand_range(0,spawns.size()-1)
-		var inst = chest.instance()
-		inst.position = spawns[j] * 64 - Vector2(-32,-32)
-		spawns.remove(j)
-		add_child(inst)
-		inst.connect("pickedUpRed",self,"increaseEnergy")
-	pass
+	var spawnItems=0
+	for i in TOTAL_CHESTS:
+		spawnItems+=i
+	
+	for index in TOTAL_CHESTS.size():
+		for j in TOTAL_CHESTS[index]:
+			var k =rand_range(0,spawns.size()-1)
 
-func increaseEnergy():
-	print("picked up red")
-	$Player.energy+=30
+			var inst = null
+			if index == 0:
+				inst = redChest.instance()
+			elif index == 1:
+				inst = blueChest.instance()
+			elif index == 2:
+				inst = greenChest.instance()
+			elif index == 3:
+				inst = yellowChest.instance()
+			
+			inst.position = spawns[k] * 64 - Vector2(-32,-32)
+			spawns.remove(k)
+			add_child(inst)
+	pass
