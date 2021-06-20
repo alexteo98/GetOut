@@ -127,4 +127,5 @@ func spawnChests():
 	pass
 
 func increaseEnergy():
+	print("picked up red")
 	$Player.energy+=30

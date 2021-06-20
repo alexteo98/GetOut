@@ -5,7 +5,7 @@ var run: bool = false
 var basicspeed = 4
 var speed = basicspeed
 var energy = 100
-const energyDecrement = 1
+const energyDecrement = 0.5
 var direction = Vector2()
 # Declare member variables here. Examples:
 # var a = 2
