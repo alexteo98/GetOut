@@ -43,6 +43,7 @@ margin_bottom = 600.0
 visible = false
 
 [node name="EnergyLbl" type="Label" parent="."]
+visible = false
 margin_right = 75.0
 margin_bottom = 14.0
 rect_scale = Vector2( 3, 3 )
@@ -68,7 +69,7 @@ __meta__ = {
 margin_left = -1.0
 margin_top = 1.0
 margin_right = 572.0
-margin_bottom = 106.0
+margin_bottom = 140.0
 custom_styles/fg = SubResource( 1 )
 custom_fonts/font = ExtResource( 8 )
 __meta__ = {

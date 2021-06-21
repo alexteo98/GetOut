@@ -1,10 +1,19 @@
-[gd_scene load_steps=4 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://src/scene/chest.gd" type="Script" id=1]
 [ext_resource path="res://assets/Chests/blue-chest-closed.png" type="Texture" id=2]
+[ext_resource path="res://assets/Chests/blue-chest-open.png" type="Texture" id=3]
 
 [sub_resource type="RectangleShape2D" id=1]
 extents = Vector2( 22.1717, 24.9616 )
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": false,
+"name": "default",
+"speed": 5.0
+} ]
 
 [node name="blue-chest" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -16,7 +25,8 @@ __meta__ = {
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource( 1 )
 
-[node name="Sprite" type="Sprite" parent="."]
-texture = ExtResource( 2 )
+[node name="Sprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+speed_scale = 0.5
 
 [connection signal="body_exited" from="." to="." method="_on_bluechest_body_exited"]

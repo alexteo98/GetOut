@@ -15,6 +15,7 @@ onready var redChest = preload("res://src/scene/red-chest.tscn")
 onready var blueChest = preload("res://src/scene/blue-chest.tscn")
 onready var greenChest = preload("res://src/scene/green-chest.tscn")
 onready var yellowChest = preload("res://src/scene/yellow-chest.tscn")
+onready var snake = preload("res://src/scene/level.tscn")
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
@@ -35,8 +36,15 @@ onready var Map = $TileMap
 
 func _ready():
 	$EnergyBar.max_value = get_node("Player").energyCap
-	$Camera2D.zoom = Vector2(2.5, 2.5)
-	$Camera2D.position = Map.map_to_world(Vector2(width/2+4, height/2+2.5))
+	# Zoom settings for fit
+	#$Camera2D.zoom = Vector2(2.5, 2.5)
+	#$Camera2D.position = Map.map_to_world(Vector2(width/2+4, height/2+2.5))
+	$EnergyBar.set_position(Vector2(0,-140))
+	$ScoreLbl.set_position(Vector2(250,-140)+$ScoreLbl.rect_position)
+	updateScore()
+	$Camera2D.zoom = Vector2(2.6, 2.7)
+	$Camera2D.position = Map.map_to_world(Vector2(width/2+3, height/2+1))
+	
 	randomize()
 	if !map_seed:
 		map_seed = randi()
@@ -126,13 +134,13 @@ func updateEnergy(energyLeft):
 	$EnergyLbl.text = "Energy Left: " + str(energyLeft)
 	$EnergyBar.value = energyLeft
 	
-func updateScore(newScore):
-	$ScoreLbl.text = "Score: " + str(newScore)
+func updateScore():
+	$ScoreLbl.text = "Score: " + str(score)
 
 func increaseScore(incr):
 	print("incr score" + str(incr))
 	score += incr
-	updateScore(score)
+	updateScore()
 	
 func spawnChests():
 	# number of boxes to spawn
