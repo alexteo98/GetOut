@@ -10,12 +10,14 @@ const SHIELD = 2
 const GOLD = 2
 const SHOES = 1
 const ENERGY_POT = 3
-const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT]
+const SNAKE_MINIGAME = 1
+const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
 onready var blueChest = preload("res://src/scene/blue-chest.tscn")
 onready var greenChest = preload("res://src/scene/green-chest.tscn")
 onready var yellowChest = preload("res://src/scene/yellow-chest.tscn")
-onready var snake = preload("res://src/scene/level.tscn")
+onready var snakePortal = preload("res://src/scene/snake-minigame.tscn")
+onready var snakeGame = preload("res://src/scene/level.tscn")
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
@@ -36,14 +38,10 @@ onready var Map = $TileMap
 
 func _ready():
 	$EnergyBar.max_value = get_node("Player").energyCap
-	# Zoom settings for fit
-	#$Camera2D.zoom = Vector2(2.5, 2.5)
-	#$Camera2D.position = Map.map_to_world(Vector2(width/2+4, height/2+2.5))
 	$EnergyBar.set_position(Vector2(0,-140))
 	$ScoreLbl.set_position(Vector2(250,-140)+$ScoreLbl.rect_position)
 	updateScore()
-	$Camera2D.zoom = Vector2(2.6, 2.7)
-	$Camera2D.position = Map.map_to_world(Vector2(width/2+3, height/2+1))
+	zoomIn()
 	
 	randomize()
 	if !map_seed:
@@ -161,8 +159,34 @@ func spawnChests():
 				inst = greenChest.instance()
 			elif index == 3:
 				inst = yellowChest.instance()
+			elif index == 4:
+				inst = snakePortal.instance()
+				inst.connect("startSnake",self,"startSnake")
 			
 			inst.position = spawns[k] * 64 - Vector2(-32,-32)
 			spawns.remove(k)
 			add_child(inst)
 	pass
+
+func startSnake():
+	var inst = snakeGame.instance()
+	zoomOut()
+	pause()
+	add_child(inst)
+	#inst.paused = false
+	
+func pause():
+	$TileMap.visible = false
+	$Player.get_tree().paused = true
+	$Monster.get_tree().paused = true
+	
+func zoomIn():
+	# Zoom settings for fit
+	#$Camera2D.zoom = Vector2(2.5, 2.5)
+	#$Camera2D.position = Map.map_to_world(Vector2(width/2+4, height/2+2.5))
+	$Camera2D.zoom = Vector2(2.6, 2.7)
+	$Camera2D.position = Map.map_to_world(Vector2(width/2+3, height/2+1))
+	
+func zoomOut():
+	$Camera2D.zoom = Vector2(1,1)
+	$Camera2D.position = Vector2(420,250)

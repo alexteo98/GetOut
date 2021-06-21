@@ -15,6 +15,7 @@ onready var snake = preload("res://src/scene/snake.tscn")
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	print("snake loaded")
 	$Control.hide()
 	paused = false
 	var walls = wall.instance() 
