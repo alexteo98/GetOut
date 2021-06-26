@@ -9,6 +9,7 @@
 [ext_resource path="res://src/scene/Settings Tab.tscn" type="PackedScene" id=7]
 
 [node name="GUI" type="CanvasLayer"]
+pause_mode = 2
 __meta__ = {
 "_edit_horizontal_guides_": [ -122.539, 600.944 ]
 }
