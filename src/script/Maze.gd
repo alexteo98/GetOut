@@ -4,13 +4,15 @@ const N = 1
 const E = 2
 const S = 4
 const W = 8
-
+#const GAMES_TO_CLEAR = 2
+var snake_cleared = false
 var score = 0
 const SHIELD = 2
 const GOLD = 2
 const SHOES = 1
 const ENERGY_POT = 3
-const SNAKE_MINIGAME = 1
+const SNAKE_MINIGAME = 2
+var GAME_NUMBER = 0
 const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
 onready var blueChest = preload("res://src/scene/blue-chest.tscn")
@@ -162,6 +164,7 @@ func spawnChests():
 			elif index == 4:
 				inst = snakePortal.instance()
 				inst.connect("startSnake",self,"startSnake")
+				inst.connect("startFlappy",self,"startFlappy")
 			
 			inst.position = spawns[k] * 64 - Vector2(-32,-32)
 			spawns.remove(k)
@@ -169,16 +172,25 @@ func spawnChests():
 	pass
 
 func startSnake():
-	var inst = snakeGame.instance()
-	zoomOut()
-	pause()
-	add_child(inst)
-	#inst.paused = false
+	if !snake_cleared:
+		var inst = snakeGame.instance()
+		snake_cleared = true
+		zoomOut()
+		pause()
+		add_child(inst)
+		inst.show()
+	else:
+		startFlappy()
+	
+func startFlappy():
+	print("flappy started")
 	
 func pause():
-	$TileMap.visible = false
-	$Player.get_tree().paused = true
-	$Monster.get_tree().paused = true
+	$TileMap.visible=false
+	
+func resume():
+	$TileMap.visible=true
+	zoomIn()
 	
 func zoomIn():
 	# Zoom settings for fit
@@ -189,4 +201,4 @@ func zoomIn():
 	
 func zoomOut():
 	$Camera2D.zoom = Vector2(1,1)
-	$Camera2D.position = Vector2(420,250)
+	$Camera2D.position = Vector2(420,240)

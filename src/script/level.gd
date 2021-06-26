@@ -33,6 +33,8 @@ func _process(delta):
 		else:
 			pauseGame()
 	$score.text = "Score: " + str(curr_score)
+	if curr_score == 5:
+		gameComplete()
 	pass
 
 func pauseGame():
@@ -48,6 +50,12 @@ func resumeGame():
 	get_node("snake").get_tree().paused = false
 	paused = false
 	pass
+
+func gameComplete():
+	print("Game Completed")
+	get_parent().resume()
+	get_parent().remove_child(self)
+	
 
 func add_food():
 	var inst = food.instance()
