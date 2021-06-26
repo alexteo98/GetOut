@@ -157,9 +157,9 @@ func spawnChests():
 			if index == 0:
 				inst = redChest.instance()
 			elif index == 1:
-				inst = blueChest.instance()
-			elif index == 2:
 				inst = greenChest.instance()
+			elif index == 2:
+				inst = blueChest.instance()
 			elif index == 3:
 				inst = yellowChest.instance()
 			elif index == 4:
@@ -173,7 +173,7 @@ func spawnChests():
 	pass
 
 func startSnake():
-	if snake_cleared:
+	if !snake_cleared:
 		var inst = snakeGame.instance()
 		snake_cleared = true
 		zoomOut()

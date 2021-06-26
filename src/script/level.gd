@@ -33,7 +33,7 @@ func _process(delta):
 		else:
 			pauseGame()
 	$score.text = "Score: " + str(curr_score)
-	if curr_score == 5:
+	if curr_score == 2:
 		gameComplete()
 	pass
 

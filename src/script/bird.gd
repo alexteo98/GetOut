@@ -17,6 +17,17 @@ func _ready():
 	connect("body_entered", self, "_on_body_entered")
 	pass 
 
+func _process(delta):
+	if game.score_current >= 2:
+		get_tree().set_screen_stretch(1,1,Vector2(1024,600),1)
+		get_parent().get_parent().resume()
+		var parent = get_parent().get_parent()
+		var remove = parent.get_child(parent.get_child_count()-1)
+		parent.remove_child(remove)
+
+func restart():
+	get_tree().reload_current_scene()
+
 func _on_body_entered(other_body):
 	if state.has_method("on_body_entered"):
 		state.on_body_entered(other_body)
@@ -84,7 +95,7 @@ class FlyingState:
 #_____________________________________________________________________________
 class FlappingState:
 	var bird
-	
+
 	func _init(bird):
 		self.bird = bird
 		bird.set_linear_velocity(Vector2(bird.speed,bird.get_linear_velocity().y))
@@ -113,7 +124,7 @@ class FlappingState:
 		pass
 	
 	func flap():
-		bird.set_linear_velocity(Vector2(bird.get_linear_velocity().x,-100))
+		bird.set_linear_velocity(Vector2(bird.get_linear_velocity().x,-125))
 		bird.set_angular_velocity(-3)
 		bird.get_node("anim").play("Flap")
 		sounds.find_node("sfx_wing").play()
@@ -134,6 +145,7 @@ class HitState:
 		bird.add_collision_exception_with(other_body)
 		sounds.find_node("sfx_hit").play()
 		sounds.find_node("sfx_die").play()
+		
 		pass
 	
 	func update(delta):
