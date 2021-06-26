@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/sfx_swooshing.wav-5297989f6b3e0c24f91ff1b686e9f143.sample"
+
+[deps]
+
+source_file="res://assets/Sounds/sfx_swooshing.wav"
+dest_files=[ "res://.import/sfx_swooshing.wav-5297989f6b3e0c24f91ff1b686e9f143.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

@@ -11,21 +11,17 @@ config_version=4
 [application]
 
 config/name="FlappyBird"
-run/main_scene="res://Scene/Stage.tscn"
+run/main_scene="res://src/scene/Main Menu.tscn"
 config/icon="res://icon.png"
 
 [autoload]
 
-game="*res://Script/game.gd"
-utils="*res://Script/utils.gd"
-sounds="*res://Scene/AudioPlayer.tscn"
+game="*res://src/script/game.gd"
+utils="*res://src/script/utils.gd"
+sounds="*res://src/scene/AudioPlayer.tscn"
 
 [display]
 
-window/size/width=144
-window/size/height=256
-window/size/test_width=288
-window/size/test_height=512
 window/stretch/mode="2d"
 
 [global]
