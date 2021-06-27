@@ -20,6 +20,7 @@ onready var greenChest = preload("res://src/scene/green-chest.tscn")
 onready var yellowChest = preload("res://src/scene/yellow-chest.tscn")
 onready var snakePortal = preload("res://src/scene/snake-minigame.tscn")
 onready var snakeGame = preload("res://src/scene/level.tscn")
+onready var flappyGame = preload("res://src/scene/Stage.tscn")
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
@@ -156,9 +157,9 @@ func spawnChests():
 			if index == 0:
 				inst = redChest.instance()
 			elif index == 1:
-				inst = blueChest.instance()
-			elif index == 2:
 				inst = greenChest.instance()
+			elif index == 2:
+				inst = blueChest.instance()
 			elif index == 3:
 				inst = yellowChest.instance()
 			elif index == 4:
@@ -184,6 +185,11 @@ func startSnake():
 	
 func startFlappy():
 	print("flappy started")
+	var inst = flappyGame.instance()
+	zoomOut()
+	pause()
+	add_child(inst)
+	inst.show()
 	
 func pause():
 	$TileMap.visible=false

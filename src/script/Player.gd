@@ -8,7 +8,7 @@ var energy = 100
 var energyCap = 150
 var shieldCount = 0
 const energyDecrement = 0.5
-const energyIncrement = 0.1
+const energyIncrement = 0.05
 var direction = Vector2()
 # Declare member variables here. Examples:
 # var a = 2
@@ -22,7 +22,7 @@ func _process(delta):
 	#running speed boost
 	if (Input.is_action_pressed("shift")):
 		if energy>0:
-			speed = basicspeed * 2
+			speed = basicspeed * 1.5
 	else:
 		speed = basicspeed
 		

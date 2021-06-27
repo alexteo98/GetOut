@@ -125,6 +125,7 @@ __meta__ = {
 }
 
 [node name="SFX-mouseClick" parent="Main Menu" instance=ExtResource( 6 )]
+bus = "Master"
 
 [node name="Settings" parent="Main Menu" instance=ExtResource( 7 )]
 visible = false
