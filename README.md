@@ -1,6 +1,6 @@
 # GetOut
 
-## installation
+## Installation
 There are 2 ways to run the game. Option 1 is preferred due to simplicity.
 1) To run the game by itself, simply double click on "Get Out.exe".
 1) To run the game with the godot engine, download the required installer at https://godotengine.org/download/windows . After installing the engine, select the "scan" option and navigate to where the game files are located and select it. Open the newly scanned project and hit the "F5" key to run the game.
