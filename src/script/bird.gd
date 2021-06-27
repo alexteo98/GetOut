@@ -2,6 +2,7 @@ extends RigidBody2D
 
 onready var state = FlyingState.new(self)
 
+const TARGET_SCORE = 2
 const STATE_FLYING		= 0
 const STATE_FLAPPING	= 1
 const STATE_HIT			= 2
@@ -18,7 +19,7 @@ func _ready():
 	pass 
 
 func _process(delta):
-	if game.score_current >= 2:
+	if game.score_current >= TARGET_SCORE:
 		get_tree().set_screen_stretch(1,1,Vector2(1024,600),1)
 		get_parent().get_parent().resume()
 		var parent = get_parent().get_parent()

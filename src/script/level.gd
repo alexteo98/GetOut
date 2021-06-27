@@ -3,7 +3,7 @@ extends Node2D
 var curr_score = 0
 var paused = false
 
-
+const TARGET_SCORE = 2
 onready var food = preload("res://src/scene/food.tscn") 
 onready var wall = preload("res://src/scene/snake walls.tscn")
 onready var snake = preload("res://src/scene/snake.tscn")
@@ -33,7 +33,7 @@ func _process(delta):
 		else:
 			pauseGame()
 	$score.text = "Score: " + str(curr_score)
-	if curr_score == 2:
+	if curr_score == TARGET_SCORE:
 		gameComplete()
 	pass
 
