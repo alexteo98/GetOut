@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=2]
+
+[ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
+[ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=2]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="NinePatchRect" type="NinePatchRect" parent="."]
+margin_right = 1024.0
+margin_bottom = 600.0
+rect_min_size = Vector2( 1024, 600 )
+texture = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="."]
+margin_left = 463.189
+margin_top = 274.977
+margin_right = 581.189
+margin_bottom = 309.977
+custom_fonts/font = ExtResource( 1 )
+text = "the end"
+__meta__ = {
+"_edit_use_anchors_": false
+}

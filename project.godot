@@ -19,6 +19,7 @@ config/icon="res://icon.png"
 game="*res://src/script/game.gd"
 utils="*res://src/script/utils.gd"
 sounds="*res://src/scene/AudioPlayer.tscn"
+Bgm="*res://src/scene/BGM.tscn"
 
 [display]
 

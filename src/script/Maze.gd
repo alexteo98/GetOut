@@ -6,12 +6,13 @@ const S = 4
 const W = 8
 #const GAMES_TO_CLEAR = 2
 var snake_cleared = false
+var flappy_cleared = false
 var score = 0
-const SHIELD = 2
+const SHIELD = 15
 const GOLD = 2
 const SHOES = 1
 const ENERGY_POT = 3
-const SNAKE_MINIGAME = 2
+const SNAKE_MINIGAME = 3
 var GAME_NUMBER = 0
 const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
@@ -120,19 +121,16 @@ func erase_walls():
 				Map.set_cellv(cell+neighbor/2, 5)
 			else:
 				Map.set_cellv(cell+neighbor/2, 10)
-		#yield(get_tree(), 'idle_frame')
 
 func _process(delta):
-	#updateScore(score)
 	if (Input.is_action_pressed("ui_cancel")):
 		$pauseMenu.show()
-
+		$pauseMenu.raise()
+		
 func _on_pauseMenu_resumeGame():
 	$pauseMenu.hide()
-	pass # Replace with function body.
 
 func updateEnergy(energyLeft):
-	$EnergyLbl.text = "Energy Left: " + str(energyLeft)
 	$EnergyBar.value = energyLeft
 	
 func updateScore():
@@ -172,7 +170,19 @@ func spawnChests():
 			add_child(inst)
 	pass
 
+func hideAll():
+	for i in get_child_count()-1:
+		get_child(i).visible = false
+
+func showAll():
+	for i in get_child_count()-1:
+		get_child(i).visible = true
+	get_child(4).visible = false
+	get_child(5).visible = false
+
+
 func startSnake():
+	hideAll()
 	if !snake_cleared:
 		var inst = snakeGame.instance()
 		snake_cleared = true
@@ -180,11 +190,18 @@ func startSnake():
 		pause()
 		add_child(inst)
 		inst.show()
-	else:
+	elif !flappy_cleared:
 		startFlappy()
+	else:
+		closeGame()
+
+func closeGame():
+	get_tree().change_scene("res://src/scene/game ended.tscn")
+	pass
 	
 func startFlappy():
 	print("flappy started")
+	flappy_cleared = true
 	var inst = flappyGame.instance()
 	zoomOut()
 	pause()
@@ -196,6 +213,8 @@ func pause():
 	
 func resume():
 	$TileMap.visible=true
+	_on_pauseMenu_resumeGame()
+	showAll();
 	zoomIn()
 	
 func zoomIn():

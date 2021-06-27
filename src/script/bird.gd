@@ -2,7 +2,7 @@ extends RigidBody2D
 
 onready var state = FlyingState.new(self)
 
-const TARGET_SCORE = 2
+const TARGET_SCORE = 5
 const STATE_FLYING		= 0
 const STATE_FLAPPING	= 1
 const STATE_HIT			= 2
@@ -25,9 +25,14 @@ func _process(delta):
 		var parent = get_parent().get_parent()
 		var remove = parent.get_child(parent.get_child_count()-1)
 		parent.remove_child(remove)
+		
 
 func restart():
-	get_tree().reload_current_scene()
+	game._set_score_current(0)
+	var parent = get_parent().get_parent()
+	var target = parent.get_child(parent.get_child_count()-1)
+	parent.remove_child(target)
+	parent.startFlappy()
 
 func _on_body_entered(other_body):
 	if state.has_method("on_body_entered"):
@@ -146,7 +151,6 @@ class HitState:
 		bird.add_collision_exception_with(other_body)
 		sounds.find_node("sfx_hit").play()
 		sounds.find_node("sfx_die").play()
-		
 		pass
 	
 	func update(delta):
@@ -159,7 +163,6 @@ class HitState:
 		pass
 	
 	func on_body_entered(other_body):
-		print (other_body.name)
 		if other_body.is_in_group(game.GROUP_GROUNDS):
 			bird.set_state(bird.STATE_GROUNDED)
 		pass
@@ -170,6 +173,7 @@ class HitState:
 #_____________________________________________________________________________
 class GroundedState:
 	var bird
+	signal end_game
 	
 	func _init(bird):
 		print("GROUNDED")
@@ -177,7 +181,9 @@ class GroundedState:
 		bird.set_linear_velocity(Vector2(0,0))
 		bird.set_angular_velocity(0)
 		sounds.find_node("sfx_hit").play()
+		bird.restart()
 		pass
+	
 	
 	func update(delta):
 		pass

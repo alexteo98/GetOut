@@ -63,6 +63,8 @@ func _process(delta):
 	get_parent().updateEnergy(energy)
 	pass
 
+
+
 func increaseEnergy(amt):
 	energy+=amt
 	if energy >= energyCap:

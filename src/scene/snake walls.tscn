@@ -9,30 +9,43 @@ extents = Vector2( 10, 300 )
 extents = Vector2( 512, 10 )
 
 [node name="walls" type="Node2D"]
+light_mask = 32
 script = ExtResource( 1 )
 
 [node name="wall_left" type="Area2D" parent="."]
 position = Vector2( -10, 300 )
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_left"]
+light_mask = 32
 shape = SubResource( 1 )
 
 [node name="wall_right" type="Area2D" parent="."]
 position = Vector2( 1034, 300 )
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_right"]
+light_mask = 32
 shape = SubResource( 1 )
 
 [node name="wall_top" type="Area2D" parent="."]
 position = Vector2( 512, -10 )
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_top"]
+light_mask = 32
 shape = SubResource( 2 )
 
 [node name="wall_bottom" type="Area2D" parent="."]
 position = Vector2( 512, 610 )
+collision_layer = 32
+collision_mask = 32
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="wall_bottom"]
+light_mask = 32
 shape = SubResource( 2 )
 
 [connection signal="area_entered" from="wall_left" to="." method="_on_wall_left_area_entered"]
