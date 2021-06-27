@@ -71,7 +71,8 @@ func spawn_new():
 
 func end_game():
 	print("game ended")
-	get_tree().reload_current_scene()
+	#get_tree().reload_current_scene()
+	self.get_tree().reload_current_scene()
 
 
 func _on_snake_tail_collision():

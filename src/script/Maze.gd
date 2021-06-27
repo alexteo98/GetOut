@@ -8,10 +8,10 @@ const W = 8
 var snake_cleared = false
 var flappy_cleared = false
 var score = 0
-const SHIELD = 15
+const SHIELD = 2
 const GOLD = 2
 const SHOES = 1
-const ENERGY_POT = 3
+const ENERGY_POT = 15
 const SNAKE_MINIGAME = 3
 var GAME_NUMBER = 0
 const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME]
@@ -153,13 +153,13 @@ func spawnChests():
 
 			var inst = null
 			if index == 0:
-				inst = redChest.instance()
-			elif index == 1:
 				inst = greenChest.instance()
+			elif index == 1:
+				inst = yellowChest.instance()
 			elif index == 2:
 				inst = blueChest.instance()
 			elif index == 3:
-				inst = yellowChest.instance()
+				inst = redChest.instance()
 			elif index == 4:
 				inst = snakePortal.instance()
 				inst.connect("startSnake",self,"startSnake")
