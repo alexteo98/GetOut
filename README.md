@@ -57,6 +57,10 @@ Players will spawn in their home base and attempt to find and complete as many m
 * Collision of objects
 * Randomised map
 * Audio GUI and functionality
+* Energy Bar
+* Score Keeping System
+* Integration of Minigames into main Maze
+* Spawning of items (Gold, Potions, Boots)
 
 ## Development Plan
 
@@ -87,9 +91,11 @@ Players will spawn in their home base and attempt to find and complete as many m
 * [Poster](https://drive.google.com/file/d/1PpCAQ23DilNRHYVn2GxDDg1HLsMyvO5K/view?usp=sharing)
 * [Video](https://drive.google.com/file/d/1T3IL5kBlmWMN5THzZMVXxRDuck6qhg-B/view?usp=sharing)
 
-
 ### Milestone 1
 * [Technical Proof of Concept Video](https://drive.google.com/file/d/1F7mGDFK3pe4w8DfUrhMI7E4IjzBf572x/view?usp=sharing)
+
+### Milestone 2
+* [Technical Proof of Concept Video](https://drive.google.com/file/d/1Oyar3VGt184YyWY1ZEx2aCNZ1lPqL8vP/view?usp=sharing)
 
 ## Project Log
 | S/N | Task                                       | Date     | Alex(hours) | Zhan Qing(hours) |
@@ -102,5 +108,11 @@ Players will spawn in their home base and attempt to find and complete as many m
 |6    |Settings GUI and Functionality              |20/05/2021|6            |6                 |
 |7    |Player and Movement                         |21/05/2021|6            |6                 |
 |8    |Maze structure and Randomisation of Maze    |26/05/2021|5            |5                 |
+|9    |Programming                                 |01/06/2021|7            |7                 |
+|10   |Programming                                 |07/06/2021|7            |7                 |
+|11   |Programming                                 |14/06/2021|7            |7                 |
+|12   |Programming                                 |21/06/2021|10           |10                |
+|13   |Programming                                 |24/06/2021|8            |8                 |
+|14   |Milestone 2                                 |27/06/2021|5            |5                 |
 
-We have clocked **53 hours each** and since this is only the first month, we believe we are on track.
+We have clocked **97 hours each** and we believe we are on track.
