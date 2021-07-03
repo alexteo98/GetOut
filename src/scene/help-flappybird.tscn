@@ -1,14 +1,16 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=9 format=2]
 
 [ext_resource path="res://assets/Flappy Bird/pipe_green_bottom.png" type="Texture" id=1]
 [ext_resource path="res://assets/Flappy Bird/bird_blue_1.png" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=3]
+[ext_resource path="res://src/scene/help-flappybird.gd" type="Script" id=4]
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=5]
 [ext_resource path="res://assets/Pictures/1670503.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=8]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=9]
 
 [node name="Control" type="CanvasLayer"]
+script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 1024.0
@@ -253,3 +255,5 @@ margin_top = 244.0
 margin_right = 246.0
 margin_bottom = 254.0
 rect_min_size = Vector2( 0, 10 )
+
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer/MarginContainer/TextureButton" to="." method="_on_TextureButton_pressed"]

@@ -47,10 +47,14 @@ func close_settings_menu():
 	pass
 	
 func open_settings_menu():
-	Helps.start()
-	#get_node("Settings").show()
+	get_node("Settings").show()
 	pass
 
 func _on_Control_close_settings():
 	close_settings_menu()
+	pass # Replace with function body.
+
+
+func _on_btnHelp_pressed():
+	Helps.start()
 	pass # Replace with function body.

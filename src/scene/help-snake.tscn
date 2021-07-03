@@ -11,12 +11,12 @@
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=9]
 
 [node name="Control" type="CanvasLayer"]
+script = ExtResource( 6 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 1024.0
 margin_bottom = 600.0
 texture = ExtResource( 4 )
-script = ExtResource( 6 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
@@ -294,4 +294,4 @@ margin_right = 246.0
 margin_bottom = 379.0
 rect_min_size = Vector2( 0, 10 )
 
-[connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer/MarginContainer/TextureButton" to="NinePatchRect" method="_on_TextureButton_pressed"]
+[connection signal="pressed" from="NinePatchRect/VBoxContainer/HBoxContainer/MarginContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
