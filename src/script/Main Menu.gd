@@ -47,7 +47,8 @@ func close_settings_menu():
 	pass
 	
 func open_settings_menu():
-	get_node("Settings").show()
+	Helps.start()
+	#get_node("Settings").show()
 	pass
 
 func _on_Control_close_settings():

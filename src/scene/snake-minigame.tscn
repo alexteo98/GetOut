@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://assets/Portals/kisspng-portal-2-clip-art-portal-png-image-5a71f5cb857a01.3279131115174179315467.png" type="Texture" id=1]
-[ext_resource path="res://src/scene/minigame.gd" type="Script" id=2]
+[ext_resource path="res://src/script/minigame.gd" type="Script" id=2]
 
 [sub_resource type="CircleShape2D" id=1]
 radius = 41.5864

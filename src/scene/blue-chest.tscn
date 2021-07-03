@@ -1,6 +1,6 @@
 [gd_scene load_steps=6 format=2]
 
-[ext_resource path="res://src/scene/chest.gd" type="Script" id=1]
+[ext_resource path="res://src/script/chest.gd" type="Script" id=1]
 [ext_resource path="res://assets/Chests/blue-chest-closed.png" type="Texture" id=2]
 [ext_resource path="res://assets/Chests/blue-chest-open.png" type="Texture" id=3]
 
