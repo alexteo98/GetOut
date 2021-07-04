@@ -124,7 +124,8 @@ func erase_walls():
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_cancel")):
-		PauseMenu.show()
+		PauseMenu.show(self)
+		pause()
 
 func updateEnergy(energyLeft):
 	$EnergyBar.value = energyLeft
@@ -204,12 +205,14 @@ func startFlappy():
 	inst.show()
 	
 func pause():
-	$TileMap.visible=false
+	get_tree().paused = true
+	pass
 	
 func resume():
-	$TileMap.visible=true
-	showAll();
-	zoomIn()
+	print("1")
+	get_tree().paused = false
+	print("2")
+	pass
 	
 func zoomIn():
 	# Zoom settings for fit

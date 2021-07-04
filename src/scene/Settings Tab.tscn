@@ -8,6 +8,7 @@
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=6]
 
 [node name="Control" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

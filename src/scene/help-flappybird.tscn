@@ -10,6 +10,7 @@
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=9]
 
 [node name="Control" type="CanvasLayer"]
+pause_mode = 2
 script = ExtResource( 4 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]

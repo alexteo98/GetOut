@@ -1,43 +1,55 @@
 extends Node2D
 
 var speed = 15
-var direction = Vector2(speed,0)
+var direction = Vector2(0,0)
 var gap = -60
 var next_tail_dir = Vector2(speed,0)
 var prev_dir = Vector2(speed,0)
 
+var DIRECTION_UP = Vector2(0,speed * -1)
+var DIRECTION_DOWN = Vector2(0,speed)
+var DIRECTION_LEFT = Vector2(-1 * speed,0)
+var DIRECTION_RIGHT = Vector2(speed,0)
+
 onready var tail = preload("res://src/scene/tail.tscn")
 signal tail_collision
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
-	
-	pass # Replace with function body.
+	pass
 
 func end_game():
 	print("snake collision")
 	emit_signal("tail_collision")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	if (Input.is_action_pressed("ui_up")):
-		direction = Vector2(0,speed * -1)
-		pass
-	elif (Input.is_action_pressed("ui_down")):
-		direction = Vector2(0,speed)
-		pass
-	elif (Input.is_action_pressed("ui_left")):
-		direction = Vector2(-1 * speed,0)
-		pass
-	elif (Input.is_action_pressed("ui_right")):
-		direction = Vector2(speed,0)
-		pass
-	moveSnake()
-	pass
+	if isStarted():
+		if (Input.is_action_pressed("ui_up")):
+			if direction == DIRECTION_DOWN:
+				pass
+			else:
+				direction = DIRECTION_UP
+		elif (Input.is_action_pressed("ui_down")):
+			if direction == DIRECTION_UP:
+				pass
+			else:
+				direction = DIRECTION_DOWN
+		elif (Input.is_action_pressed("ui_left")):
+			if direction == DIRECTION_RIGHT:
+				pass
+			else:
+				direction = DIRECTION_LEFT
+		elif (Input.is_action_pressed("ui_right")):
+			if direction == DIRECTION_LEFT:
+				pass
+			else:
+				direction = DIRECTION_RIGHT
+		moveSnake()
+	else:
+		if (Input.is_action_pressed("ui_select")):
+			get_parent().startGame()
+
+func isStarted():
+	return get_parent().started()
 
 func moveSnake():
 	var head_pos = get_node("head").position

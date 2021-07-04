@@ -8,7 +8,6 @@ func _ready():
 func _on_btnQuit_Pressed():
 	pass
 
-
 func _on_btnMainMenu_Pressed():
 	pass # Replace with function body.
 
