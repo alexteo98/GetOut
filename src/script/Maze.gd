@@ -124,11 +124,7 @@ func erase_walls():
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_cancel")):
-		$pauseMenu.show()
-		$pauseMenu.raise()
-		
-func _on_pauseMenu_resumeGame():
-	$pauseMenu.hide()
+		PauseMenu.show()
 
 func updateEnergy(energyLeft):
 	$EnergyBar.value = energyLeft
@@ -180,7 +176,6 @@ func showAll():
 	get_child(4).visible = false
 	get_child(5).visible = false
 
-
 func startSnake():
 	hideAll()
 	if !snake_cleared:
@@ -213,7 +208,6 @@ func pause():
 	
 func resume():
 	$TileMap.visible=true
-	_on_pauseMenu_resumeGame()
 	showAll();
 	zoomIn()
 	

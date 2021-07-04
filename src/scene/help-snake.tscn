@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Snake/food.png" type="Texture" id=3]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=4]
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=5]
-[ext_resource path="res://src/scene/help-snake.gd" type="Script" id=6]
+[ext_resource path="res://src/script/help-snake.gd" type="Script" id=6]
 [ext_resource path="res://assets/Pictures/1670503.png" type="Texture" id=7]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=8]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=9]

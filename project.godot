@@ -21,6 +21,8 @@ utils="*res://src/script/utils.gd"
 sounds="*res://src/scene/AudioPlayer.tscn"
 Bgm="*res://src/scene/BGM.tscn"
 Helps="*res://src/script/helps.gd"
+PauseMenu="*res://src/script/mainPauseMenu.gd"
+SettingsMenu="*res://src/script/menuSettings.gd"
 
 [display]
 

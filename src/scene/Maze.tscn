@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/script/Maze.gd" type="Script" id=1]
 [ext_resource path="res://assets/Map/road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://src/scene/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scene/Monster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/script/Monster.gd" type="Script" id=5]
-[ext_resource path="res://src/scene/Settings Tab.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/scene/newPauseMenus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -35,12 +33,6 @@ pause_mode = 2
 pause_mode = 2
 script = ExtResource( 5 )
 
-[node name="pauseMenu" parent="." instance=ExtResource( 7 )]
-visible = false
-
-[node name="Control" parent="." instance=ExtResource( 6 )]
-visible = false
-
 [node name="ScoreLbl" type="Label" parent="."]
 margin_left = 1582.98
 margin_top = 4.66299
@@ -63,5 +55,3 @@ custom_fonts/font = ExtResource( 8 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[connection signal="resumeGame" from="pauseMenu" to="." method="_on_pauseMenu_resumeGame"]

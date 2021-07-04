@@ -38,10 +38,8 @@ func _process(delta):
 	pass
 
 func pauseGame():
-	$Control.show()
-	$Control.raise()
+	PauseMenu.show()
 	get_node("snake").get_tree().paused = true
-	#$snake.get_tree().paused = true
 	paused = true
 	pass
 

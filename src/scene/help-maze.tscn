@@ -10,7 +10,7 @@
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=8]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=9]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=10]
-[ext_resource path="res://src/scene/help-maze.gd" type="Script" id=11]
+[ext_resource path="res://src/script/help-maze.gd" type="Script" id=11]
 
 [node name="Control" type="CanvasLayer"]
 script = ExtResource( 11 )

@@ -1,4 +1,4 @@
-extends Control
+extends CanvasLayer
 
 signal close_settings
 
@@ -23,17 +23,11 @@ func _ready():
 	pass # Replace with function body.
 
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 
 func _on_TextureButton_pressed():
 	$SFX.play()
 	yield(get_tree().create_timer(delay), "timeout")
-	#get_tree().change_scene("res://src/scene/Main Menu.tscn")
-	print("sas")
-	emit_signal("close_settings")
+	SettingsMenu.close()
 
 func _on_CheckButton2_toggled(button_pressed):
 	$SFX.play()
