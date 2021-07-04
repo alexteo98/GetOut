@@ -50,6 +50,20 @@ margin_right = 572.0
 margin_bottom = 140.0
 custom_styles/fg = SubResource( 1 )
 custom_fonts/font = ExtResource( 8 )
+percent_visible = false
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="EnergyBar"]
+margin_left = 160.543
+margin_top = 38.3438
+margin_right = 388.543
+margin_bottom = 97.3438
+custom_fonts/font = ExtResource( 8 )
+text = "Energy"
+align = 1
+valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

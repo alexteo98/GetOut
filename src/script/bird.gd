@@ -28,7 +28,13 @@ func _process(delta):
 		parent.zoomIn()
 		parent.setFlappyStatus(true)
 		parent.remove_child(remove)
-		
+
+func pause():
+	print("bird-pause")
+	get_parent().pause()
+
+func resume():
+	pass
 
 func restart():
 	game._set_score_current(0)
@@ -40,18 +46,14 @@ func restart():
 func _on_body_entered(other_body):
 	if state.has_method("on_body_entered"):
 		state.on_body_entered(other_body)
-	pass
 
 func _physics_process(delta):
 	state.update(delta)
-	pass
 
 func _input(event):
 	state.input(event)
-	pass
 
 func set_state(new_state):
-	#prev_state = get_state()
 	state.exit()
 	if new_state == STATE_FLYING:
 		state = FlyingState.new(self)
@@ -123,6 +125,8 @@ class FlappingState:
 		if event.is_action_pressed("flap"):
 			flap()
 			print("FLAP")
+		elif event.is_action_pressed("ui_cancel"):
+			bird.pause()
 		pass
 	
 	func on_body_entered(other_body):
@@ -176,8 +180,7 @@ class HitState:
 #_____________________________________________________________________________
 class GroundedState:
 	var bird
-	signal end_game
-	
+
 	func _init(bird):
 		print("GROUNDED")
 		self.bird = bird
@@ -186,7 +189,6 @@ class GroundedState:
 		sounds.find_node("sfx_hit").play()
 		bird.restart()
 		pass
-	
 	
 	func update(delta):
 		pass

@@ -10,13 +10,9 @@ var shieldCount = 0
 const energyDecrement = 0.5
 const energyIncrement = 0.05
 var direction = Vector2()
-# Declare member variables here. Examples:
-# var a = 2
-# var b = "text"
 
-# Called when the node enters the scene tree for the first time.
 func _ready():
-  pass # Replace with function body.
+  pass
 
 func _process(delta):
 	#running speed boost
@@ -59,25 +55,25 @@ func _process(delta):
 		var collision = get_slide_collision(index)
 		if collision.collider is RigidBody2D:
 			print("Collided!")
-	#.updateEnergy(energy)
 	get_parent().updateEnergy(energy)
-	pass
-
-
 
 func increaseEnergy(amt):
-	energy+=amt
+	print("incr energy:" + str(amt))
+	energy += amt
 	if energy >= energyCap:
 		energy = energyCap
 
 func increaseBaseSpd():
+	print("basic speed increased")
 	basicspeed += 1
 
 func increaseScore(incr):
 	get_parent().increaseScore(incr)
-	
+	print("score increased by: " + str(incr) + "current score: " + str(get_parent().getScore()))
+
 func getShield():
 	shieldCount += 1
+	print("increase shield by 1" + "current shield count: " + str(shieldCount))
 
 func recoverEnergy():
 	if (energy < energyCap):

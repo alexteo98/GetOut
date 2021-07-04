@@ -139,7 +139,10 @@ func increaseScore(incr):
 	print("incr score" + str(incr))
 	score += incr
 	updateScore()
-	
+
+func getScore():
+	return score
+
 func spawnChests():
 	# number of boxes to spawn
 	var spawnItems=0
@@ -169,7 +172,7 @@ func spawnChests():
 	pass
 
 func hideAll():
-	for i in get_child_count()-1:
+	for i in range(get_child_count()-1):
 		get_child(i).visible = false
 
 func showAll():
@@ -219,13 +222,14 @@ func startFlappy():
 	hideAll()
 	pause()
 	add_child(inst)
-	inst.get_tree().paused = false
+	#inst.get_tree().paused = false
 	inst.show()
 	
 func pause():
+	print("main maze paused called")
 	get_tree().paused = true
-	pass
-	
+	print(get_tree().paused)
+
 func resume():
 	get_tree().paused = false
 	pass
