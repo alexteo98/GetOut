@@ -8,6 +8,7 @@
 
 [node name="PauseMenu" type="CanvasLayer"]
 pause_mode = 2
+layer = 10
 script = ExtResource( 5 )
 
 [node name="Control" type="NinePatchRect" parent="."]

@@ -33,10 +33,12 @@ script = ExtResource( 3 )
 [node name="spawner_ground" parent="." instance=ExtResource( 4 )]
 
 [node name="background" parent="." instance=ExtResource( 1 )]
+layer = -11
 
 [node name="spawner_pipe" parent="." instance=ExtResource( 5 )]
 
 [node name="Hud" type="CanvasLayer" parent="."]
+layer = -10
 
 [node name="instructions" type="TextureButton" parent="Hud"]
 margin_left = -0.529724

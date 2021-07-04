@@ -4,6 +4,11 @@ extends CanvasLayer
 func _ready():
 	pass
 
+func _input(event):
+	if event.is_action_pressed("ui_cancel"):
+		print("pause menu paused pressed")
+		PauseMenu.close()
+
 
 func _on_btnQuit_Pressed():
 	pass

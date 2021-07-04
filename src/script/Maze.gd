@@ -222,17 +222,17 @@ func startFlappy():
 	hideAll()
 	pause()
 	add_child(inst)
-	#inst.get_tree().paused = false
 	inst.show()
 	
 func pause():
 	print("main maze paused called")
 	get_tree().paused = true
 	print(get_tree().paused)
+	$Player.disableMovement()
 
 func resume():
 	get_tree().paused = false
-	pass
+	$Player.enableMovement()
 
 func setSnakeStatus(status):
 	snake_cleared = status
