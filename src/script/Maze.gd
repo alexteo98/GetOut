@@ -4,16 +4,18 @@ const N = 1
 const E = 2
 const S = 4
 const W = 8
-#const GAMES_TO_CLEAR = 2
+
+const NO_OF_MINIGAMES = 2
 var snake_cleared = false
 var flappy_cleared = false
 var score = 0
+
 const SHIELD = 15
 const GOLD = 2
 const SHOES = 1
 const ENERGY_POT = 3
 const SNAKE_MINIGAME = 3
-var GAME_NUMBER = 0
+
 const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
 onready var blueChest = preload("res://src/scene/blue-chest.tscn")
@@ -159,8 +161,7 @@ func spawnChests():
 				inst = yellowChest.instance()
 			elif index == 4:
 				inst = snakePortal.instance()
-				inst.connect("startSnake",self,"startSnake")
-				inst.connect("startFlappy",self,"startFlappy")
+				inst.connect("startMinigame",self,"startMinigame")
 			
 			inst.position = spawns[k] * 64 - Vector2(-32,-32)
 			spawns.remove(k)
@@ -174,22 +175,38 @@ func hideAll():
 func showAll():
 	for i in get_child_count()-1:
 		get_child(i).visible = true
-	get_child(4).visible = false
-	get_child(5).visible = false
+	get_child(4).visible = true
+	get_child(5).visible = true
 
 func startSnake():
 	hideAll()
-	if !snake_cleared:
-		var inst = snakeGame.instance()
-		snake_cleared = true
-		zoomOut()
-		pause()
-		add_child(inst)
-		inst.show()
-	elif !flappy_cleared:
-		startFlappy()
-	else:
+	var inst = snakeGame.instance()
+	zoomOut()
+	pause()
+	add_child(inst)
+	inst.show()
+
+func startMinigame():
+	if snake_cleared and flappy_cleared:
 		closeGame()
+	else:
+		var rng = RandomNumberGenerator.new()
+		rng.randomize()
+		var rand = rng.randi_range(0, 1)
+		print(rand)
+		
+		if rand == 0:
+			if !snake_cleared:
+				startSnake()
+			else:
+				startMinigame()
+		elif rand == 1:
+			if !flappy_cleared:
+				startFlappy()
+			else:
+				startMinigame()
+		else:
+			pass
 
 func closeGame():
 	get_tree().change_scene("res://src/scene/game ended.tscn")
@@ -197,11 +214,12 @@ func closeGame():
 	
 func startFlappy():
 	print("flappy started")
-	flappy_cleared = true
 	var inst = flappyGame.instance()
 	zoomOut()
+	hideAll()
 	pause()
 	add_child(inst)
+	inst.get_tree().paused = false
 	inst.show()
 	
 func pause():
@@ -209,11 +227,21 @@ func pause():
 	pass
 	
 func resume():
-	print("1")
 	get_tree().paused = false
-	print("2")
 	pass
-	
+
+func setSnakeStatus(status):
+	snake_cleared = status
+
+func getSnakeStatus():
+	return snake_cleared
+
+func setFlappyStatus(status):
+	flappy_cleared = status
+
+func getFlappyStatus():
+	return flappy_cleared
+
 func zoomIn():
 	# Zoom settings for fit
 	#$Camera2D.zoom = Vector2(2.5, 2.5)

@@ -3,7 +3,7 @@ extends Node2D
 var curr_score = 0
 var started = false
 
-const TARGET_SCORE = 10
+const TARGET_SCORE = 1
 onready var food = preload("res://src/scene/food.tscn") 
 onready var wall = preload("res://src/scene/snake walls.tscn")
 onready var snake = preload("res://src/scene/snake.tscn")
@@ -13,6 +13,7 @@ func _ready():
 	walls.connect("wall_collision",self,"end_game")
 	snake.connect("tail_collision",self,"end_game")
 	add_child(walls)
+	resume()
 	print("snake loaded")
 
 func _process(delta):
@@ -44,11 +45,14 @@ func started():
 
 func end_game():
 	print("game ended")
-	get_tree().reload_current_scene()
+	restart()
 
 func gameComplete():
 	print("Game Completed")
+	get_parent().showAll()
+	get_parent().zoomIn()
 	get_parent().resume()
+	get_parent().setSnakeStatus(true)
 	get_parent().remove_child(self)
 
 func pause():
@@ -62,3 +66,8 @@ func startGame():
 	$Label.hide()
 	started = true
 	add_food()
+
+func restart():
+	get_parent().startSnake()
+	get_parent().resume()
+	get_parent().remove_child(self)
