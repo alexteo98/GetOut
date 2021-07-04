@@ -1,9 +1,13 @@
-[gd_scene load_steps=3 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=2]
+[ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=3]
+[ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=4]
+[ext_resource path="res://src/scene/game ended.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
+script = ExtResource( 5 )
 
 [node name="NinePatchRect" type="NinePatchRect" parent="."]
 margin_right = 1024.0
@@ -24,3 +28,31 @@ text = "the end"
 __meta__ = {
 "_edit_use_anchors_": false
 }
+
+[node name="TextureButton" type="TextureButton" parent="."]
+margin_left = 443.499
+margin_top = 443.499
+margin_right = 593.499
+margin_bottom = 493.499
+rect_min_size = Vector2( 150, 50 )
+texture_normal = ExtResource( 3 )
+texture_pressed = ExtResource( 4 )
+expand = true
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="Label" type="Label" parent="TextureButton"]
+anchor_top = 0.0299658
+anchor_bottom = 0.0299658
+margin_right = 150.0
+margin_bottom = 50.0
+custom_fonts/font = ExtResource( 1 )
+text = "exit game"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

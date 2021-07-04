@@ -10,14 +10,10 @@ script/source = "extends Control
 var curr_score = 0
 var target_score = 10
 
-onready var menu = preload(\"res://src/scene/Settings Tab.tscn\")
-
-# Called when the node enters the scene tree for the first time.
 func _ready():
 	self.connect(\"endgame\",self,\"collision_detected\")
 	pass # Replace with function body.
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
 	if target_score == curr_score:
 		$NinePatchRect/score_lbl.text = \"Completed!\"
@@ -30,7 +26,6 @@ func _on_Snake_increase_score():
 
 func collision_detected():
 	print(\"game ended\")
-	
 	pass
 
 func _on_wall_left_area_entered(area):

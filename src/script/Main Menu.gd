@@ -13,19 +13,11 @@ const delay = 0.15
 func _ready():
 	close_settings_menu()
 	pass
-	
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-#func _process(delta):
-#	pass
-
 
 func _on_TextureButton2_pressed():
 	$"SFX-mouseClick".play()
 	yield(get_tree().create_timer(delay), "timeout")
-	#get_tree().change_scene("res://src/scene/Settings Tab.tscn")
-	open_settings_menu()
-	
+	SettingsMenu.show()
 
 func _on_TextureButton3_pressed():
 	$"SFX-mouseClick".play()
@@ -42,14 +34,15 @@ func _wait(time):
 	yield(get_tree().create_timer(time), "timeout")
 
 func close_settings_menu():
-	get_node("Settings").hide()
+	SettingsMenu.close()
 	self.show()
-	pass
-	
-func open_settings_menu():
-	get_node("Settings").show()
 	pass
 
 func _on_Control_close_settings():
 	close_settings_menu()
+	pass # Replace with function body.
+
+
+func _on_btnHelp_pressed():
+	Helps.start()
 	pass # Replace with function body.

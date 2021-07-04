@@ -1,12 +1,10 @@
-[gd_scene load_steps=10 format=2]
+[gd_scene load_steps=8 format=2]
 
 [ext_resource path="res://src/script/Maze.gd" type="Script" id=1]
 [ext_resource path="res://assets/Map/road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://src/scene/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scene/Monster.tscn" type="PackedScene" id=4]
 [ext_resource path="res://src/script/Monster.gd" type="Script" id=5]
-[ext_resource path="res://src/scene/Settings Tab.tscn" type="PackedScene" id=6]
-[ext_resource path="res://src/scene/newPauseMenus.tscn" type="PackedScene" id=7]
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -29,17 +27,9 @@ drag_margin_h_enabled = true
 drag_margin_v_enabled = true
 
 [node name="Player" parent="." instance=ExtResource( 3 )]
-pause_mode = 2
 
 [node name="Monster" parent="." instance=ExtResource( 4 )]
-pause_mode = 2
 script = ExtResource( 5 )
-
-[node name="pauseMenu" parent="." instance=ExtResource( 7 )]
-visible = false
-
-[node name="Control" parent="." instance=ExtResource( 6 )]
-visible = false
 
 [node name="ScoreLbl" type="Label" parent="."]
 margin_left = 1582.98
@@ -60,8 +50,20 @@ margin_right = 572.0
 margin_bottom = 140.0
 custom_styles/fg = SubResource( 1 )
 custom_fonts/font = ExtResource( 8 )
+percent_visible = false
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[connection signal="resumeGame" from="pauseMenu" to="." method="_on_pauseMenu_resumeGame"]
+[node name="Label" type="Label" parent="EnergyBar"]
+margin_left = 160.543
+margin_top = 38.3438
+margin_right = 388.543
+margin_bottom = 97.3438
+custom_fonts/font = ExtResource( 8 )
+text = "Energy"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}

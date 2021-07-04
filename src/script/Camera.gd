@@ -14,3 +14,9 @@ func get_total_position():
 func _physics_process(delta):
 	set_position(Vector2(bird.get_position().x, get_position().y))
 	pass
+
+func pause():
+	get_tree().set_screen_stretch(1,1,Vector2(1024,600),1)
+	
+func resume():
+	get_tree().set_screen_stretch(1,1,Vector2(144,256),1)

@@ -1,20 +1,23 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=4]
-[ext_resource path="res://src/scene/newPauseMenus.gd" type="Script" id=5]
-[ext_resource path="res://src/scene/Settings Tab.tscn" type="PackedScene" id=6]
+[ext_resource path="res://src/scene/pauseMenu.gd" type="Script" id=5]
 
-[node name="Control" type="NinePatchRect"]
-rect_min_size = Vector2( 1024, 600 )
+[node name="PauseMenu" type="CanvasLayer"]
+pause_mode = 2
+layer = 10
 script = ExtResource( 5 )
+
+[node name="Control" type="NinePatchRect" parent="."]
+rect_min_size = Vector2( 1024, 600 )
 __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control"]
 margin_right = 1040.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 1024, 600 )
@@ -22,41 +25,41 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer"]
 margin_right = 312.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 312, 600 )
 
-[node name="NinePatchRect" type="HBoxContainer" parent="HBoxContainer"]
+[node name="NinePatchRect" type="HBoxContainer" parent="Control/HBoxContainer"]
 margin_left = 316.0
 margin_right = 724.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 392, 0 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect"]
 margin_right = 30.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 30, 0 )
 
-[node name="NinePatchRect" type="VBoxContainer" parent="HBoxContainer/NinePatchRect"]
+[node name="NinePatchRect" type="VBoxContainer" parent="Control/HBoxContainer/NinePatchRect"]
 margin_left = 34.0
 margin_right = 374.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 340, 0 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect"]
 margin_right = 340.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="NinePatchRect" type="NinePatchRect" parent="HBoxContainer/NinePatchRect/NinePatchRect"]
+[node name="NinePatchRect" type="NinePatchRect" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect"]
 margin_top = 34.0
 margin_right = 340.0
 margin_bottom = 574.0
 rect_min_size = Vector2( 340, 540 )
 texture = ExtResource( 4 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect"]
 margin_right = 20.0
 margin_bottom = 540.0
 rect_min_size = Vector2( 20, 540 )
@@ -64,7 +67,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="HBoxContainer" type="HBoxContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect"]
+[node name="HBoxContainer" type="HBoxContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect"]
 margin_left = 20.0
 margin_right = 320.0
 margin_bottom = 540.0
@@ -73,17 +76,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="VBoxContainer" type="VBoxContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer"]
 margin_right = 300.0
 margin_bottom = 540.0
 rect_min_size = Vector2( 300, 0 )
 
-[node name="MarginContainer" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_right = 300.0
 margin_bottom = 30.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="Label" type="Label" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 34.0
 margin_right = 300.0
 margin_bottom = 84.0
@@ -93,13 +96,13 @@ text = "GAME PAUSED"
 align = 1
 valign = 1
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 88.0
 margin_right = 300.0
 margin_bottom = 118.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="TextureButton" type="TextureButton" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="TextureButton" type="TextureButton" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 122.0
 margin_right = 300.0
 margin_bottom = 172.0
@@ -108,7 +111,7 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton"]
+[node name="Label" type="Label" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton"]
 margin_right = 300.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 300, 50 )
@@ -120,13 +123,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer3" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer3" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 176.0
 margin_right = 300.0
 margin_bottom = 206.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="TextureButton2" type="TextureButton" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="TextureButton2" type="TextureButton" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 210.0
 margin_right = 300.0
 margin_bottom = 260.0
@@ -135,9 +138,10 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton2"]
+[node name="Label" type="Label" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton2"]
+margin_top = 1.33484
 margin_right = 300.0
-margin_bottom = 50.0
+margin_bottom = 51.3348
 rect_min_size = Vector2( 300, 50 )
 custom_fonts/font = ExtResource( 1 )
 text = "Settings"
@@ -147,13 +151,13 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer4" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="MarginContainer6" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 264.0
 margin_right = 300.0
 margin_bottom = 294.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="TextureButton3" type="TextureButton" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+[node name="TextureButton5" type="TextureButton" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
 margin_top = 298.0
 margin_right = 300.0
 margin_bottom = 348.0
@@ -162,7 +166,34 @@ texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton3"]
+[node name="Label" type="Label" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton5"]
+margin_right = 300.0
+margin_bottom = 50.0
+rect_min_size = Vector2( 300, 50 )
+custom_fonts/font = ExtResource( 1 )
+text = "Help"
+align = 1
+valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="MarginContainer4" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+margin_top = 352.0
+margin_right = 300.0
+margin_bottom = 382.0
+rect_min_size = Vector2( 0, 30 )
+
+[node name="TextureButton3" type="TextureButton" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+margin_top = 386.0
+margin_right = 300.0
+margin_bottom = 436.0
+rect_min_size = Vector2( 0, 50 )
+texture_normal = ExtResource( 2 )
+texture_pressed = ExtResource( 3 )
+expand = true
+
+[node name="Label" type="Label" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton3"]
 margin_right = 300.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 300, 50 )
@@ -174,22 +205,22 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer5" type="MarginContainer" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
-margin_top = 352.0
+[node name="MarginContainer5" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+margin_top = 440.0
 margin_right = 300.0
-margin_bottom = 382.0
+margin_bottom = 470.0
 rect_min_size = Vector2( 0, 30 )
 
-[node name="TextureButton4" type="TextureButton" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
-margin_top = 386.0
+[node name="TextureButton4" type="TextureButton" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer"]
+margin_top = 474.0
 margin_right = 300.0
-margin_bottom = 436.0
+margin_bottom = 524.0
 rect_min_size = Vector2( 0, 50 )
 texture_normal = ExtResource( 2 )
 texture_pressed = ExtResource( 3 )
 expand = true
 
-[node name="Label" type="Label" parent="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton4"]
+[node name="Label" type="Label" parent="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton4"]
 margin_right = 300.0
 margin_bottom = 50.0
 rect_min_size = Vector2( 300, 50 )
@@ -201,17 +232,14 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="MarginContainer2" type="MarginContainer" parent="HBoxContainer/NinePatchRect"]
+[node name="MarginContainer2" type="MarginContainer" parent="Control/HBoxContainer/NinePatchRect"]
 margin_left = 378.0
 margin_right = 408.0
 margin_bottom = 600.0
 rect_min_size = Vector2( 30, 0 )
 
-[node name="Control" parent="." instance=ExtResource( 6 )]
-visible = false
-
-[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton" to="." method="_on_TextureButton_pressed"]
-[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton2" to="." method="_on_TextureButton2_pressed"]
-[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton3" to="." method="_on_TextureButton3_pressed"]
-[connection signal="pressed" from="HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton4" to="." method="_on_TextureButton4_pressed"]
-[connection signal="close_settings" from="Control" to="." method="_on_Control_close_settings"]
+[connection signal="pressed" from="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton" to="." method="_on_btnResume_Pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton2" to="." method="_on_btnSettings_Pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton5" to="." method="_on_btnHelp_Pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton3" to="." method="_on_btnMainMenu_Pressed"]
+[connection signal="pressed" from="Control/HBoxContainer/NinePatchRect/NinePatchRect/NinePatchRect/HBoxContainer/VBoxContainer/TextureButton4" to="." method="_on_btnQuit_Pressed"]
