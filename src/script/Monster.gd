@@ -13,7 +13,8 @@ func _ready():
 	get_node("Sprite").position.y = 800
 	get_node("CollisionShape2D").position.x = 800
 	get_node("CollisionShape2D").position.y = 800
-
+	get_node("Area2D").position.y = 800
+	get_node("Area2D").position.x = 800
 
 func _process(delta):
 	if (Input.is_action_pressed("ui_up")):
@@ -43,3 +44,8 @@ func _process(delta):
 
 func _moveMonster():
 	pass
+
+
+func _on_Area2D_body_entered(body):
+	if body.name == "Player":
+		body.hit()

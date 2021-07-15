@@ -23,6 +23,7 @@ margin_left = 463.189
 margin_top = 274.977
 margin_right = 581.189
 margin_bottom = 309.977
+rect_pivot_offset = Vector2( 106.115, 84.6738 )
 custom_fonts/font = ExtResource( 1 )
 text = "the end"
 __meta__ = {
@@ -51,6 +52,19 @@ custom_fonts/font = ExtResource( 1 )
 text = "exit game"
 align = 1
 valign = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="scoreLbl" type="Label" parent="."]
+margin_left = 362.0
+margin_top = 335.0
+margin_right = 662.0
+margin_bottom = 370.0
+rect_pivot_offset = Vector2( 106.115, 84.6738 )
+custom_fonts/font = ExtResource( 1 )
+text = "Score: "
+align = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }

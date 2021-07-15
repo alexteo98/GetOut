@@ -21,3 +21,11 @@ func close():
 	caller.resume()
 	get_parent().remove_child(ref)
 	instNo = 0
+
+func hide():
+	if ref:
+		ref.layer = -10
+	
+func unhide():
+	if ref:
+		ref.layer = 10

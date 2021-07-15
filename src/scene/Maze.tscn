@@ -1,10 +1,9 @@
-[gd_scene load_steps=8 format=2]
+[gd_scene load_steps=7 format=2]
 
 [ext_resource path="res://src/script/Maze.gd" type="Script" id=1]
 [ext_resource path="res://assets/Map/road_tiles.tres" type="TileSet" id=2]
 [ext_resource path="res://src/scene/Player.tscn" type="PackedScene" id=3]
 [ext_resource path="res://src/scene/Monster.tscn" type="PackedScene" id=4]
-[ext_resource path="res://src/script/Monster.gd" type="Script" id=5]
 [ext_resource path="res://assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=8]
 
 [sub_resource type="StyleBoxFlat" id=1]
@@ -29,7 +28,6 @@ drag_margin_v_enabled = true
 [node name="Player" parent="." instance=ExtResource( 3 )]
 
 [node name="Monster" parent="." instance=ExtResource( 4 )]
-script = ExtResource( 5 )
 
 [node name="ScoreLbl" type="Label" parent="."]
 margin_left = 1582.98
@@ -39,6 +37,18 @@ margin_bottom = 39.663
 rect_scale = Vector2( 3, 3 )
 custom_fonts/font = ExtResource( 8 )
 text = "Score:"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="ShieldLbl" type="Label" parent="."]
+margin_left = 746.924
+margin_top = 8.65847
+margin_right = 931.924
+margin_bottom = 43.6585
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = ExtResource( 8 )
+text = "Shields: 0"
 __meta__ = {
 "_edit_use_anchors_": false
 }

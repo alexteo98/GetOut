@@ -10,6 +10,9 @@ var shieldCount = 0
 const energyDecrement = 0.5
 const energyIncrement = 0.05
 var direction = Vector2()
+var facingRight = true # currently facing direction
+var running = false # checks if running
+var slowed = false
 
 func _ready():
   pass
@@ -22,32 +25,41 @@ func _process(delta):
 		if (Input.is_action_pressed("shift")):
 			if energy>0:
 				speed = basicspeed * 1.5
+				running = true
 		else:
 			speed = basicspeed
+			running = false
 			
 		recoverEnergy()
 		
 		if (Input.is_action_pressed("ui_up")):
-			print("player moving up")
+			runningAnim()
+			#print("player moving up")
 			direction = Vector2(0,speed * -1)
 			if (speed>basicspeed):
 				energy-=energyDecrement
 		elif (Input.is_action_pressed("ui_down")):
-			print("player moving down")
+			runningAnim()
+			#print("player moving down")
 			direction = Vector2(0,speed)
 			if (speed>basicspeed):
 				energy-=energyDecrement
 		elif (Input.is_action_pressed("ui_left")):
-			print("player moving left")
+			facingRight = false
+			#print("player moving left")
+			runningAnim()
 			direction = Vector2(-1 * speed,0)
 			if (speed>basicspeed):
 				energy-=energyDecrement
 		elif (Input.is_action_pressed("ui_right")):
-			print("player moving right")
+			facingRight = true
+			#print("player moving right")
 			direction = Vector2(speed,0)
+			runningAnim()
 			if (speed>basicspeed):
 				energy-=energyDecrement
 		else:
+			get_node("anim").play("idle")
 			direction = Vector2(0,0)
 			
 		if energy<=0:
@@ -61,10 +73,27 @@ func _process(delta):
 			var collision = get_slide_collision(index)
 			if collision.collider is RigidBody2D:
 				print("Collided!")
+				get_node("anim").play("collide")
 		get_parent().updateEnergy(energy)
 
+func runningAnim():
+	if running == true: 
+		if facingRight == true:
+			get_node("Sprite").flip_h = false
+			get_node("anim").play("run")
+		else:
+			get_node("Sprite").flip_h = true
+			get_node("anim").play("run")
+	else:
+		if facingRight == true:
+			get_node("Sprite").flip_h = false
+			get_node("anim").play("stroll")
+		else:
+			get_node("Sprite").flip_h = true
+			get_node("anim").play("stroll")
+	pass
+
 func increaseEnergy(amt):
-	print("incr energy:" + str(amt))
 	energy += amt
 	if energy >= energyCap:
 		energy = energyCap
@@ -79,10 +108,32 @@ func increaseScore(incr):
 
 func getShield():
 	shieldCount += 1
+	updateShield()
 	print("increase shield by 1" + "current shield count: " + str(shieldCount))
 
+func useShield():
+	if shieldCount <= 0:
+		print("no more shields left")
+	else:
+		shieldCount -= 1
+		updateShield()
+		print("used 1 shield" + "current shield count: " + str(shieldCount))
+
+func updateShield():
+	get_parent().updateShield(shieldCount)
+
+func slowDown():
+	if !slowed:
+		slowed =true
+		basicspeed = basicspeed / 4
+		print("slowed for 5 sec")
+		yield(get_tree().create_timer(5.0), "timeout")
+		basicspeed = basicspeed * 4
+		print("slow recovered")
+		slowed = false
+	
+
 func recoverEnergy():
-	print("recovering energy")
 	if (energy < energyCap):
 		energy+=energyIncrement
 		if (energy >= energyCap):
@@ -93,3 +144,11 @@ func disableMovement():
 	
 func enableMovement():
 	disabled = false
+
+func hit():
+	print("hit")
+	if shieldCount <= 0:
+		increaseScore(-100)
+	else:
+		useShield()
+	pass

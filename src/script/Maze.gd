@@ -9,14 +9,17 @@ const NO_OF_MINIGAMES = 2
 var snake_cleared = false
 var flappy_cleared = false
 var score = 0
+var score_acc = 0 
 
-const SHIELD = 15
+const SHIELD = 3
 const GOLD = 2
 const SHOES = 1
-const ENERGY_POT = 3
+const ENERGY_POT = 5
 const SNAKE_MINIGAME = 3
+const SPIKE_TRAP = 3
+const SLOW_TRAP = 4
 
-const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME]
+const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME,SPIKE_TRAP,SLOW_TRAP]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
 onready var blueChest = preload("res://src/scene/blue-chest.tscn")
 onready var greenChest = preload("res://src/scene/green-chest.tscn")
@@ -24,6 +27,8 @@ onready var yellowChest = preload("res://src/scene/yellow-chest.tscn")
 onready var snakePortal = preload("res://src/scene/snake-minigame.tscn")
 onready var snakeGame = preload("res://src/scene/level.tscn")
 onready var flappyGame = preload("res://src/scene/Stage.tscn")
+onready var spikeTrap = preload("res://src/scene/spikeTrap.tscn")
+onready var slowTrap = preload("res://src/scene/slowTrap.tscn")
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
@@ -46,6 +51,7 @@ func _ready():
 	$EnergyBar.max_value = get_node("Player").energyCap
 	$EnergyBar.set_position(Vector2(0,-140))
 	$ScoreLbl.set_position(Vector2(250,-140)+$ScoreLbl.rect_position)
+	$ShieldLbl.set_position(Vector2(250,-140)+$ShieldLbl.rect_position)
 	updateScore()
 	zoomIn()
 	
@@ -128,10 +134,16 @@ func _process(delta):
 	if (Input.is_action_pressed("ui_cancel")):
 		PauseMenu.show(self)
 		pause()
+	if score_acc != 0 :
+		increaseScore(1000)
+		score_acc -=1
 
 func updateEnergy(energyLeft):
 	$EnergyBar.value = energyLeft
-	
+
+func updateShield(n):
+	$ShieldLbl.text = "Shield: " + str(n)
+
 func updateScore():
 	$ScoreLbl.text = "Score: " + str(score)
 
@@ -165,6 +177,10 @@ func spawnChests():
 			elif index == 4:
 				inst = snakePortal.instance()
 				inst.connect("startMinigame",self,"startMinigame")
+			elif index == 5:
+				inst = spikeTrap.instance()
+			elif index == 6:
+				inst = slowTrap.instance()
 			
 			inst.position = spawns[k] * 64 - Vector2(-32,-32)
 			spawns.remove(k)
@@ -212,7 +228,11 @@ func startMinigame():
 			pass
 
 func closeGame():
-	get_tree().change_scene("res://src/scene/game ended.tscn")
+	var end = load("res://src/scene/game ended.tscn")
+	var inst = end.instance()
+	inst.setScore(score)
+	get_parent().add_child(inst)
+	get_parent().remove_child(self)
 	pass
 	
 func startFlappy():
@@ -236,12 +256,14 @@ func resume():
 
 func setSnakeStatus(status):
 	snake_cleared = status
+	score_acc +=1
 
 func getSnakeStatus():
 	return snake_cleared
 
 func setFlappyStatus(status):
 	flappy_cleared = status
+	score_acc +=1
 
 func getFlappyStatus():
 	return flappy_cleared

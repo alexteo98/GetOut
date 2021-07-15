@@ -27,6 +27,7 @@ func _ready():
 func _on_TextureButton_pressed():
 	$SFX.play()
 	yield(get_tree().create_timer(delay), "timeout")
+	PauseMenu.unhide()
 	SettingsMenu.close()
 
 func _on_CheckButton2_toggled(button_pressed):
