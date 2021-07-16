@@ -69,4 +69,17 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
+[node name="timeLbl" type="Label" parent="."]
+margin_left = 262.0
+margin_top = 380.0
+margin_right = 762.0
+margin_bottom = 415.0
+rect_pivot_offset = Vector2( 106.115, 84.6738 )
+custom_fonts/font = ExtResource( 1 )
+text = "Time Elasped:"
+align = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="pressed" from="TextureButton" to="." method="_on_TextureButton_pressed"]

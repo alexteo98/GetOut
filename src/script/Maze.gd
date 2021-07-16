@@ -10,6 +10,7 @@ var snake_cleared = false
 var flappy_cleared = false
 var score = 0
 var score_acc = 0 
+var time = 0
 
 const SHIELD = 3
 const GOLD = 2
@@ -50,8 +51,9 @@ onready var Map = $TileMap
 func _ready():
 	$EnergyBar.max_value = get_node("Player").energyCap
 	$EnergyBar.set_position(Vector2(0,-140))
-	$ScoreLbl.set_position(Vector2(250,-140)+$ScoreLbl.rect_position)
-	$ShieldLbl.set_position(Vector2(250,-140)+$ShieldLbl.rect_position)
+	$ScoreLbl.set_position(Vector2(400,-140)+$ScoreLbl.rect_position)
+	$ShieldLbl.set_position(Vector2(50,-140)+$ShieldLbl.rect_position)
+	$TimeLbl.set_position(Vector2(250,-140)+$TimeLbl.rect_position)
 	updateScore()
 	zoomIn()
 	
@@ -131,12 +133,20 @@ func erase_walls():
 				Map.set_cellv(cell+neighbor/2, 10)
 
 func _process(delta):
+	time += delta
+	updateTime()
 	if (Input.is_action_pressed("ui_cancel")):
 		PauseMenu.show(self)
 		pause()
 	if score_acc != 0 :
 		increaseScore(1000)
 		score_acc -=1
+
+func updateTime():
+	var totalSeconds = int(time)
+	var minutes = str("%02d" % (totalSeconds/60))
+	var seconds = str("%02d" % (totalSeconds%60))
+	$TimeLbl.text = "Time: " + str(minutes) + ":" + str(seconds)
 
 func updateEnergy(energyLeft):
 	$EnergyBar.value = energyLeft
@@ -230,6 +240,7 @@ func startMinigame():
 func closeGame():
 	var end = load("res://src/scene/game ended.tscn")
 	var inst = end.instance()
+	inst.setTime(time)
 	inst.setScore(score)
 	get_parent().add_child(inst)
 	get_parent().remove_child(self)

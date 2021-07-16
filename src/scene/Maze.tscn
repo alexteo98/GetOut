@@ -42,13 +42,25 @@ __meta__ = {
 }
 
 [node name="ShieldLbl" type="Label" parent="."]
-margin_left = 746.924
-margin_top = 8.65847
-margin_right = 931.924
-margin_bottom = 43.6585
+margin_left = 598.903
+margin_top = 12.4297
+margin_right = 783.903
+margin_bottom = 47.4297
 rect_scale = Vector2( 3, 3 )
 custom_fonts/font = ExtResource( 8 )
 text = "Shields: 0"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TimeLbl" type="Label" parent="."]
+margin_left = 1097.65
+margin_top = 3.94442
+margin_right = 1282.65
+margin_bottom = 38.9445
+rect_scale = Vector2( 3, 3 )
+custom_fonts/font = ExtResource( 8 )
+text = "Time: "
 __meta__ = {
 "_edit_use_anchors_": false
 }
