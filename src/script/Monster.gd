@@ -9,6 +9,7 @@ var direction = Vector2()
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	get_node("anim").play("run")
 	get_node("Sprite").position.x = 800
 	get_node("Sprite").position.y = 800
 	get_node("CollisionShape2D").position.x = 800

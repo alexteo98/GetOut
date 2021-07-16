@@ -13,6 +13,7 @@ var direction = Vector2()
 var facingRight = true # currently facing direction
 var running = false # checks if running
 var slowed = false
+var getHit = false
 
 func _ready():
   pass
@@ -80,17 +81,29 @@ func runningAnim():
 	if running == true: 
 		if facingRight == true:
 			get_node("Sprite").flip_h = false
-			get_node("anim").play("run")
+			if getHit == true:
+				get_node("anim").play("collide")
+			else:
+				get_node("anim").play("run")
 		else:
 			get_node("Sprite").flip_h = true
-			get_node("anim").play("run")
+			if getHit == true:
+				get_node("anim").play("collide")
+			else:
+				get_node("anim").play("run")
 	else:
 		if facingRight == true:
 			get_node("Sprite").flip_h = false
-			get_node("anim").play("stroll")
+			if getHit == true:
+				get_node("anim").play("collide")
+			else:
+				get_node("anim").play("stroll")
 		else:
 			get_node("Sprite").flip_h = true
-			get_node("anim").play("stroll")
+			if getHit == true:
+				get_node("anim").play("collide")
+			else:
+				get_node("anim").play("stroll")
 	pass
 
 func increaseEnergy(amt):
@@ -147,8 +160,11 @@ func enableMovement():
 
 func hit():
 	print("hit")
+	getHit = true
 	if shieldCount <= 0:
 		increaseScore(-100)
 	else:
 		useShield()
+	yield(get_tree().create_timer(0.8), "timeout")
+	getHit = false
 	pass
