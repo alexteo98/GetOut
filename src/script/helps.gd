@@ -37,4 +37,5 @@ func nextPage():
 func closeAll():
 	get_parent().remove_child(active)
 	pageNo=0
+	PauseMenu.unhide()
 	pass

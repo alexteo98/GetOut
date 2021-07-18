@@ -50,7 +50,7 @@ func changeDirection():
 		move(rand)
 
 func move(direction):
-	#direcPrinter(direction)
+	direcPrinter(direction)
 	if direction == 0: # move right
 		get_node("Sprite").flip_h = false
 		los.cast_to = Vector2(99999, 0)

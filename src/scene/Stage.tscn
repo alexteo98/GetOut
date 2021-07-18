@@ -20,9 +20,11 @@ size = 14
 font_data = ExtResource( 8 )
 
 [node name="world" type="Node2D"]
+pause_mode = 2
 script = ExtResource( 10 )
 
 [node name="camera" type="Camera2D" parent="."]
+pause_mode = 2
 offset = Vector2( -36, 0 )
 anchor_mode = 0
 current = true
@@ -38,9 +40,11 @@ layer = -11
 [node name="spawner_pipe" parent="." instance=ExtResource( 5 )]
 
 [node name="Hud" type="CanvasLayer" parent="."]
+pause_mode = 2
 layer = -10
 
 [node name="instructions" type="TextureButton" parent="Hud"]
+pause_mode = 2
 margin_left = -0.529724
 margin_top = 8.47571
 margin_right = 143.47
@@ -52,6 +56,7 @@ __meta__ = {
 }
 
 [node name="position" type="TextureButton" parent="Hud/instructions"]
+pause_mode = 2
 margin_left = 44.0
 margin_top = 104.0
 margin_right = 116.0
@@ -62,6 +67,7 @@ __meta__ = {
 }
 
 [node name="RichTextLabel" type="Label" parent="Hud/instructions"]
+pause_mode = 2
 margin_left = 2.0
 margin_top = 159.0
 margin_right = 145.0
@@ -75,6 +81,7 @@ __meta__ = {
 }
 
 [node name="lbl_score" type="Label" parent="Hud"]
+pause_mode = 2
 margin_top = 10.0
 margin_right = 144.0
 margin_bottom = 27.0

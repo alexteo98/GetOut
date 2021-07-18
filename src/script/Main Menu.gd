@@ -40,7 +40,6 @@ func close_settings_menu():
 
 func _on_Control_close_settings():
 	close_settings_menu()
-	pass # Replace with function body.
 
 
 func _on_btnHelp_pressed():

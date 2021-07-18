@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var run: bool = false
 var disabled: bool = false
-var basicspeed = 3
+var basicspeed: float = 3
 var speed = basicspeed
 var energy = 100
 var energyCap = 100
@@ -141,12 +141,12 @@ func updateShield():
 
 func slowDown():
 	if !slowed:
-		slowed =true
+		slowed = true
 		basicspeed = basicspeed / 4
-		print("slowed for 5 sec")
+		print("slowed for 5 sec" + str(basicspeed))
 		yield(get_tree().create_timer(5.0), "timeout")
 		basicspeed = basicspeed * 4
-		print("slow recovered")
+		print("slow recovered" + str(basicspeed))
 		slowed = false
 	
 

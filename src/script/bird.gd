@@ -31,7 +31,7 @@ func _process(delta):
 
 func pause():
 	print("bird-pause")
-	get_parent().pause()
+	#get_parent().pause()
 
 func resume():
 	pass
@@ -125,8 +125,6 @@ class FlappingState:
 		if event.is_action_pressed("flap"):
 			flap()
 			print("FLAP")
-		elif event.is_action_pressed("ui_cancel"):
-			bird.pause()
 		pass
 	
 	func on_body_entered(other_body):

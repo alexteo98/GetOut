@@ -10,10 +10,12 @@ func _input(event):
 		PauseMenu.close()
 
 func _on_btnQuit_Pressed():
-	get_tree().paused = !get_tree().paused # toggles pause
+	get_tree().quit()
 	pass
 
 func _on_btnMainMenu_Pressed():
+	get_tree().change_scene("res://src/scene/Main Menu.tscn")
+	PauseMenu.close()
 	pass
 
 func _on_btnSettings_Pressed():
@@ -24,4 +26,5 @@ func _on_btnResume_Pressed():
 	PauseMenu.close()
 
 func _on_btnHelp_Pressed():
+	PauseMenu.hide()
 	Helps.start()

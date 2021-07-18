@@ -19,7 +19,7 @@ const ENERGY_POT = 5
 const SNAKE_MINIGAME = 3
 const SPIKE_TRAP = 3
 const SLOW_TRAP = 4
-const MONSTER = 10
+const MONSTER = 1
 
 const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME,SPIKE_TRAP,SLOW_TRAP,MONSTER]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
@@ -32,6 +32,7 @@ onready var flappyGame = preload("res://src/scene/Stage.tscn")
 onready var spikeTrap = preload("res://src/scene/spikeTrap.tscn")
 onready var slowTrap = preload("res://src/scene/slowTrap.tscn")
 onready var monster = preload("res://src/scene/Monster.tscn")
+var activeMiniGame: bool = false
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
@@ -138,8 +139,9 @@ func _process(delta):
 	time += delta
 	updateTime()
 	if (Input.is_action_pressed("ui_cancel")):
-		PauseMenu.show(self)
-		pause()
+		if !activeMiniGame:
+			PauseMenu.show(self)
+			pause()
 	if score_acc != 0 :
 		increaseScore(1000)
 		score_acc -=1
@@ -201,11 +203,11 @@ func spawnChests():
 			add_child(inst)
 
 func hideAll():
-	for i in range(get_child_count()-1):
+	for i in range(get_child_count()):
 		get_child(i).visible = false
 
 func showAll():
-	for i in get_child_count()-1:
+	for i in get_child_count():
 		get_child(i).visible = true
 	get_child(4).visible = true
 	get_child(5).visible = true
@@ -216,6 +218,7 @@ func startSnake():
 	zoomOut()
 	pause()
 	add_child(inst)
+	activeMiniGame = true
 	inst.show()
 
 func startMinigame():
@@ -256,6 +259,7 @@ func startFlappy():
 	hideAll()
 	pause()
 	add_child(inst)
+	activeMiniGame = true
 	inst.show()
 	
 func pause():
@@ -271,6 +275,7 @@ func resume():
 func setSnakeStatus(status):
 	snake_cleared = status
 	score_acc +=1
+	activeMiniGame = false
 
 func getSnakeStatus():
 	return snake_cleared
@@ -278,6 +283,7 @@ func getSnakeStatus():
 func setFlappyStatus(status):
 	flappy_cleared = status
 	score_acc +=1
+	activeMiniGame = false
 
 func getFlappyStatus():
 	return flappy_cleared

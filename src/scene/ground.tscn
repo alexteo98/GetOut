@@ -7,20 +7,24 @@
 extents = Vector2( 88.8069, 28.2016 )
 
 [node name="ground" type="StaticBody2D"]
+pause_mode = 2
 collision_layer = 524288
 collision_mask = 524288
 script = ExtResource( 2 )
 
 [node name="shape" type="CollisionShape2D" parent="."]
+pause_mode = 2
 light_mask = 524288
 position = Vector2( 89.578, 228.423 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+pause_mode = 2
 position = Vector2( 0, 256 )
 texture = ExtResource( 1 )
 centered = false
 offset = Vector2( 0, -56 )
 
 [node name="bottom_right" type="Position2D" parent="."]
+pause_mode = 2
 position = Vector2( 168, 256 )

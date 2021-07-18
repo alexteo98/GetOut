@@ -56,8 +56,9 @@ func gameComplete():
 	get_parent().remove_child(self)
 
 func pause():
-	get_tree().paused = true
-	PauseMenu.show(self)
+	#get_tree().paused = true
+	#PauseMenu.show(self)
+	pass
 
 func resume():
 	get_tree().paused = false
