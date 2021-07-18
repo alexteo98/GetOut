@@ -12,15 +12,6 @@ var player_spotted = false
 onready var los = $LineOfSight
 
 func _ready():
-	get_node("anim").play("run")
-	get_node("Sprite").position.x = 800
-	get_node("Sprite").position.y = 800
-	get_node("CollisionShape2D").position.x = 800
-	get_node("CollisionShape2D").position.y = 800
-	get_node("LineOfSight").position.x = 800
-	get_node("LineOfSight").position.y = 800
-	get_node("Area2D").position.y = 800
-	get_node("Area2D").position.x = 800
 	rng.randomize()
 	var initMove = 1 
 	prevDirection = initMove
@@ -40,7 +31,7 @@ func _physics_process(delta):
 			player_spotted = false
 	
 	if collision:
-		print("monster collided with " + collision.collider.name)
+		#print("monster collided with " + collision.collider.name)
 		changeDirection()
 	else:
 		move(prevDirection)
@@ -93,13 +84,17 @@ func move(direction):
 
 func direcPrinter(x):
 	if x == 0:
-		print("Moving right (0)")
+		#print("Moving right (0)")
+		pass
 	elif x == 1:
-		print("Moving left (1)")
+		pass
+		#print("Moving left (1)")
 	elif x == 2:
-		print("Moving down (2)")
-	else :
-		print("Moving up (3)")
+		pass
+		#print("Moving down (2)")
+	else:
+		pass
+		#print("Moving up (3)")
 
 func resetSpeed():
 	velocity.y = 0

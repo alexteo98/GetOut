@@ -19,8 +19,9 @@ const ENERGY_POT = 5
 const SNAKE_MINIGAME = 3
 const SPIKE_TRAP = 3
 const SLOW_TRAP = 4
+const MONSTER = 10
 
-const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME,SPIKE_TRAP,SLOW_TRAP]
+const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME,SPIKE_TRAP,SLOW_TRAP,MONSTER]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
 onready var blueChest = preload("res://src/scene/blue-chest.tscn")
 onready var greenChest = preload("res://src/scene/green-chest.tscn")
@@ -30,10 +31,11 @@ onready var snakeGame = preload("res://src/scene/level.tscn")
 onready var flappyGame = preload("res://src/scene/Stage.tscn")
 onready var spikeTrap = preload("res://src/scene/spikeTrap.tscn")
 onready var slowTrap = preload("res://src/scene/slowTrap.tscn")
+onready var monster = preload("res://src/scene/Monster.tscn")
 
 var cell_walls = {Vector2(0, -2): N, Vector2(2, 0): E, 
 				  Vector2(0, 2): S, Vector2(-2, 0): W}
-				
+
 var spawns=[]
 
 var tile_size = 25  # tile size (in pixels)
@@ -173,7 +175,7 @@ func spawnChests():
 	
 	for index in TOTAL_CHESTS.size():
 		for j in TOTAL_CHESTS[index]:
-			var k =rand_range(0,spawns.size()-1)
+			var k = rand_range(0,spawns.size()-1)
 
 			var inst = null
 			if index == 0:
@@ -191,11 +193,12 @@ func spawnChests():
 				inst = spikeTrap.instance()
 			elif index == 6:
 				inst = slowTrap.instance()
+			elif index == 7:
+				inst = monster.instance()
 			
 			inst.position = spawns[k] * 64 - Vector2(-32,-32)
 			spawns.remove(k)
 			add_child(inst)
-	pass
 
 func hideAll():
 	for i in range(get_child_count()-1):
