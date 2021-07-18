@@ -26,12 +26,15 @@ func _physics_process(delta):
 		#print(los.get_collider().name)
 		if los.get_collider().name == "Player" :
 			player_spotted = true
-			print("monster spotted player")
+			#print("monster spotted player")
 		else:
 			player_spotted = false
 	
 	if collision:
 		#print("monster collided with " + collision.collider.name)
+		if collision.collider.name == "Player":
+			collision.collider.hit()
+			pass
 		changeDirection()
 	else:
 		move(prevDirection)
@@ -50,7 +53,7 @@ func changeDirection():
 		move(rand)
 
 func move(direction):
-	direcPrinter(direction)
+	#direcPrinter(direction)
 	if direction == 0: # move right
 		get_node("Sprite").flip_h = false
 		los.cast_to = Vector2(99999, 0)

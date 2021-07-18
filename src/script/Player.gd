@@ -83,26 +83,32 @@ func runningAnim():
 		if facingRight == true:
 			get_node("Sprite").flip_h = false
 			if getHit == true:
-				get_node("anim").play("collide")
+				print("1")
+				#get_node("anim").play("collide")
+				pass
 			else:
 				get_node("anim").play("run")
 		else:
 			get_node("Sprite").flip_h = true
 			if getHit == true:
-				get_node("anim").play("collide")
+				print("2")
+				#get_node("anim").play("collide")
+				pass
 			else:
 				get_node("anim").play("run")
 	else:
 		if facingRight == true:
 			get_node("Sprite").flip_h = false
 			if getHit == true:
-				get_node("anim").play("collide")
+				#get_node("anim").play("collide")
+				pass
 			else:
 				get_node("anim").play("stroll")
 		else:
 			get_node("Sprite").flip_h = true
 			if getHit == true:
-				get_node("anim").play("collide")
+				#get_node("anim").play("collide")
+				pass
 			else:
 				get_node("anim").play("stroll")
 	pass
@@ -118,7 +124,7 @@ func increaseBaseSpd():
 
 func increaseScore(incr):
 	get_parent().increaseScore(incr)
-	print("score increased by: " + str(incr) + "current score: " + str(get_parent().getScore()))
+	#print("score increased by: " + str(incr) + "current score: " + str(get_parent().getScore()))
 	pass # CHANGE BACK
 
 func getShield():
@@ -163,14 +169,18 @@ func enableMovement():
 	disabled = false
 
 func hit():
-	print("hit")
-	getHit = true
-	if shieldCount <= 0:
-		increaseScore(-100)
-	else:
-		useShield()
-	yield(get_tree().create_timer(0.8), "timeout")
-	getHit = false
+	if getHit == false:
+		getHit = true
+		if shieldCount <= 0:
+			get_node("anim").play("collide")
+			yield(get_tree().create_timer(0.8), "timeout")
+			get_node("anim").play("idle")
+			increaseScore(-100)
+		else:
+			useShield()
+		
+		
+		getHit = false
 	pass
 
 func visibleShield():

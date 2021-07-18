@@ -5,7 +5,7 @@
 [ext_resource path="res://assets/Characters/shield.png" type="Texture" id=3]
 
 [sub_resource type="CircleShape2D" id=1]
-radius = 8.28748
+radius = 9.63352
 
 [sub_resource type="Animation" id=2]
 resource_name = "collide"
@@ -83,7 +83,7 @@ position = Vector2( 4.59541, -1.20677 )
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
-position = Vector2( 3.45674, -3.09876 )
+position = Vector2( 5.51459, -3.00522 )
 scale = Vector2( 1.4321, 1.38735 )
 texture = ExtResource( 1 )
 hframes = 8

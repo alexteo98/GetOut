@@ -162,7 +162,7 @@ func updateScore():
 	$ScoreLbl.text = "Score: " + str(score)
 
 func increaseScore(incr):
-	print("incr score" + str(incr))
+	#print("incr score" + str(incr))
 	score += incr
 	updateScore()
 
