@@ -75,7 +75,7 @@ func _process(delta):
 			if collision.collider is RigidBody2D:
 				print("Collided!")
 				get_node("anim").play("collide")
-		get_parent().updateEnergy(energy)
+		get_parent().updateEnergy(energy) 
 
 func runningAnim():
 	if running == true: 
@@ -118,6 +118,7 @@ func increaseBaseSpd():
 func increaseScore(incr):
 	get_parent().increaseScore(incr)
 	print("score increased by: " + str(incr) + "current score: " + str(get_parent().getScore()))
+	pass # CHANGE BACK
 
 func getShield():
 	shieldCount += 1

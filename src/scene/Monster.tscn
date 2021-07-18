@@ -4,7 +4,7 @@
 [ext_resource path="res://src/script/Monster.gd" type="Script" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 13.9902, 13.7502 )
+extents = Vector2( 11.8856, 11.9263 )
 
 [sub_resource type="Animation" id=2]
 resource_name = "run"
@@ -23,7 +23,7 @@ tracks/0/keys = {
 }
 
 [sub_resource type="RectangleShape2D" id=3]
-extents = Vector2( 13.8499, 13.3293 )
+extents = Vector2( 11.8856, 11.6456 )
 
 [node name="KinematicBody2D" type="KinematicBody2D"]
 script = ExtResource( 2 )
@@ -39,6 +39,10 @@ shape = SubResource( 1 )
 
 [node name="anim" type="AnimationPlayer" parent="."]
 anims/run = SubResource( 2 )
+
+[node name="LineOfSight" type="RayCast2D" parent="."]
+enabled = true
+cast_to = Vector2( 500, 0 )
 
 [node name="Area2D" type="Area2D" parent="."]
 

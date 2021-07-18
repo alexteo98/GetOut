@@ -46,7 +46,7 @@ var map_seed = 0
 var erase_fraction = 0.2
 
 # get a reference to the map for convenience
-onready var Map = $TileMap
+onready var Map = get_node("LevelNavigation").get_node("TileMap")
 
 func _ready():
 	$EnergyBar.max_value = get_node("Player").energyCap
