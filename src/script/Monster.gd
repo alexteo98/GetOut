@@ -50,10 +50,10 @@ func changeDirection():
 		move(rand)
 
 func move(direction):
-	direcPrinter(direction)
+	#direcPrinter(direction)
 	if direction == 0: # move right
 		get_node("Sprite").flip_h = false
-		los.cast_to = Vector2(800, 0)
+		los.cast_to = Vector2(99999, 0)
 		resetSpeed()
 		if player_spotted == true:
 			velocity.x += 600
@@ -61,14 +61,14 @@ func move(direction):
 			velocity.x += 200
 	elif direction == 1: # move left
 		get_node("Sprite").flip_h = true
-		los.cast_to = Vector2(-800, 0)
+		los.cast_to = Vector2(-99999, 0)
 		resetSpeed()
 		if player_spotted == true:
 			velocity.x -= 600
 		else:
 			velocity.x -= 200
 	elif direction == 2: # move down
-		los.cast_to = Vector2(0, 800)
+		los.cast_to = Vector2(0, 99999)
 		resetSpeed()
 		if player_spotted == true:
 			velocity.y += 600
@@ -76,7 +76,7 @@ func move(direction):
 			velocity.y += 200
 	else: # move up
 		resetSpeed()
-		los.cast_to = Vector2(0, -800)
+		los.cast_to = Vector2(0, -99999)
 		if player_spotted == true:
 			velocity.y -= 600
 		else:
@@ -84,17 +84,17 @@ func move(direction):
 
 func direcPrinter(x):
 	if x == 0:
-		#print("Moving right (0)")
+		print("Moving right (0)")
 		pass
 	elif x == 1:
 		pass
-		#print("Moving left (1)")
+		print("Moving left (1)")
 	elif x == 2:
 		pass
-		#print("Moving down (2)")
+		print("Moving down (2)")
 	else:
 		pass
-		#print("Moving up (3)")
+		print("Moving up (3)")
 
 func resetSpeed():
 	velocity.y = 0

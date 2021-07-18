@@ -2,7 +2,7 @@ extends KinematicBody2D
 
 var run: bool = false
 var disabled: bool = false
-var basicspeed = 4
+var basicspeed = 3
 var speed = basicspeed
 var energy = 100
 var energyCap = 100
@@ -68,6 +68,7 @@ func _process(delta):
 		
 		get_node("Sprite").position += direction
 		get_node("CollisionShape2D").position += direction
+		get_node("shield").position += direction
 		move_and_slide(direction, Vector2(0,0), false, 4, 0.785, false)
 
 		for index in get_slide_count():
@@ -113,7 +114,7 @@ func increaseEnergy(amt):
 
 func increaseBaseSpd():
 	print("basic speed increased")
-	basicspeed += 1
+	basicspeed += 0.5
 
 func increaseScore(incr):
 	get_parent().increaseScore(incr)
@@ -124,6 +125,7 @@ func getShield():
 	shieldCount += 1
 	updateShield()
 	print("increase shield by 1" + "current shield count: " + str(shieldCount))
+	visibleShield()
 
 func useShield():
 	if shieldCount <= 0:
@@ -132,6 +134,7 @@ func useShield():
 		shieldCount -= 1
 		updateShield()
 		print("used 1 shield" + "current shield count: " + str(shieldCount))
+	visibleShield()
 
 func updateShield():
 	get_parent().updateShield(shieldCount)
@@ -169,3 +172,9 @@ func hit():
 	yield(get_tree().create_timer(0.8), "timeout")
 	getHit = false
 	pass
+
+func visibleShield():
+	if shieldCount > 0:
+		$shield.visible = true
+	else:
+		$shield.visible = false
