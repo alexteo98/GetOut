@@ -3,7 +3,7 @@ extends Node2D
 var curr_score = 0
 var started = false
 
-const TARGET_SCORE = 1
+const TARGET_SCORE = 20
 onready var food = preload("res://src/scene/food.tscn") 
 onready var wall = preload("res://src/scene/snake walls.tscn")
 onready var snake = preload("res://src/scene/snake.tscn")

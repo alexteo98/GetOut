@@ -4,7 +4,7 @@ var endScore = 0
 var endTime = 0
 
 func _ready():
-	var totalScore = endScore - floor(endTime*25)
+	var totalScore = endScore - floor(endTime*10)
 	$timeLbl.text = "Time Elasped: " + str(int(endTime)/60) + " Minutes " + str(int(endTime)%60) + " Seconds"
 	$scoreLbl.text = "Score: " + str(totalScore)
 
