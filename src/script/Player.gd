@@ -59,6 +59,8 @@ func _process(delta):
 			runningAnim()
 			if (speed>basicspeed):
 				energy-=energyDecrement
+		elif getHit == true :
+			get_node("anim").play("collide")
 		else:
 			get_node("anim").play("idle")
 			direction = Vector2(0,0)
@@ -175,11 +177,10 @@ func hit():
 			get_node("anim").play("collide")
 			yield(get_tree().create_timer(0.8), "timeout")
 			get_node("anim").play("idle")
+			#print("player got hit")
 			increaseScore(-100)
 		else:
 			useShield()
-		
-		
 		getHit = false
 	pass
 

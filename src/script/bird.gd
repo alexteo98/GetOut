@@ -2,7 +2,7 @@ extends RigidBody2D
 
 onready var state = FlyingState.new(self)
 
-const TARGET_SCORE = 20
+const TARGET_SCORE = 10
 const STATE_FLYING		= 0
 const STATE_FLAPPING	= 1
 const STATE_HIT			= 2

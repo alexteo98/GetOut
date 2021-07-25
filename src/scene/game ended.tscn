@@ -4,7 +4,7 @@
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=4]
-[ext_resource path="res://src/scene/game ended.gd" type="Script" id=5]
+[ext_resource path="res://src/script/game ended.gd" type="Script" id=5]
 
 [node name="Node2D" type="Node2D"]
 script = ExtResource( 5 )

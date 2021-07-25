@@ -21,7 +21,8 @@ func _on_greenchest_body_entered(body):
 func _on_yellowchest_body_entered(body):
 	if body.name == "Player":
 		body.increaseScore(50)
-		playSound()
+		#playSound()
+		sounds.find_node("sfx_point").play()
 		removeChest()
 
 func _on_bluechest_body_exited(body):

@@ -1,10 +1,10 @@
 [gd_scene load_steps=4 format=2]
 
 [ext_resource path="res://src/script/chest.gd" type="Script" id=1]
-[ext_resource path="res://assets/Chests/yellow-chest-closed.png" type="Texture" id=2]
+[ext_resource path="res://assets/NewItems/Coin1.png" type="Texture" id=2]
 
 [sub_resource type="RectangleShape2D" id=1]
-extents = Vector2( 24.1696, 24.0341 )
+extents = Vector2( 29.0254, 36.9207 )
 
 [node name="yellow-chest" type="Area2D"]
 scale = Vector2( 0.5, 0.5 )
@@ -17,6 +17,8 @@ __meta__ = {
 shape = SubResource( 1 )
 
 [node name="Sprite" type="Sprite" parent="."]
+position = Vector2( -0.730225, -2.26526 )
+scale = Vector2( 0.124178, 0.126484 )
 texture = ExtResource( 2 )
 
 [connection signal="body_entered" from="." to="." method="_on_yellowchest_body_entered"]

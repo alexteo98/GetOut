@@ -21,6 +21,8 @@ func display(help):
 	active = inst
 
 func nextPage():
+	sounds.get_node("sfx_mouse_click").play()
+	yield(get_tree().create_timer(0.15), "timeout")
 	get_parent().remove_child(active)
 	if pageNo == 1:
 		display(mazeHelp2)
@@ -35,6 +37,8 @@ func nextPage():
 		pass
 
 func closeAll():
+	sounds.get_node("sfx_mouse_click").play()
+	yield(get_tree().create_timer(0.15), "timeout")
 	get_parent().remove_child(active)
 	pageNo=0
 	PauseMenu.unhide()

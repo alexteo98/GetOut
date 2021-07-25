@@ -1,11 +1,10 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=3]
 [ext_resource path="res://assets/Pictures/Mazerunner_maze-skyview.jpg" type="Texture" id=4]
 [ext_resource path="res://src/script/Main Menu.gd" type="Script" id=5]
-[ext_resource path="res://src/scene/SFX.tscn" type="PackedScene" id=6]
 
 [node name="GUI" type="CanvasLayer"]
 __meta__ = {
@@ -142,9 +141,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SFX-mouseClick" parent="Main Menu" instance=ExtResource( 6 )]
-bus = "Master"
 
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnNewGame" to="Main Menu" method="_on_TextureButton_pressed"]
 [connection signal="pressed" from="Main Menu/VBoxContainer/btnOptions" to="Main Menu" method="_on_TextureButton2_pressed"]

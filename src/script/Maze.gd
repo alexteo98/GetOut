@@ -11,6 +11,8 @@ var flappy_cleared = false
 var score = 0
 var score_acc = 0 
 var time = 0
+var snakeTries = 0
+var flappyTries = 0
 
 const SHIELD = 3
 const GOLD = 2
@@ -19,7 +21,7 @@ const ENERGY_POT = 5
 const SNAKE_MINIGAME = 3
 const SPIKE_TRAP = 3
 const SLOW_TRAP = 4
-const MONSTER = 1
+const MONSTER = 3
 
 const TOTAL_CHESTS = [SHIELD,GOLD,SHOES,ENERGY_POT,SNAKE_MINIGAME,SPIKE_TRAP,SLOW_TRAP,MONSTER]
 onready var redChest = preload("res://src/scene/red-chest.tscn")
@@ -142,9 +144,6 @@ func _process(delta):
 		if !activeMiniGame:
 			PauseMenu.show(self)
 			pause()
-	if score_acc != 0 :
-		increaseScore(1000)
-		score_acc -=1
 
 func updateTime():
 	var totalSeconds = int(time)
@@ -213,13 +212,22 @@ func showAll():
 	get_child(5).visible = true
 
 func startSnake():
-	hideAll()
-	var inst = snakeGame.instance()
-	zoomOut()
-	pause()
-	add_child(inst)
-	activeMiniGame = true
-	inst.show()
+	snakeTries += 1
+	if snakeTries > 3:
+		setSnakeStatus(true)
+		showAll()
+		zoomIn()
+		resume()
+		increaseScore(-1000)
+		
+	else: 
+		hideAll()
+		var inst = snakeGame.instance()
+		zoomOut()
+		pause()
+		add_child(inst)
+		activeMiniGame = true
+		inst.show()
 
 func startMinigame():
 	if snake_cleared and flappy_cleared:
@@ -253,14 +261,23 @@ func closeGame():
 	pass
 	
 func startFlappy():
-	print("flappy started")
-	var inst = flappyGame.instance()
-	zoomOut()
-	hideAll()
-	pause()
-	add_child(inst)
-	activeMiniGame = true
-	inst.show()
+	flappyTries += 1
+	if flappyTries > 3:
+		setFlappyStatus(true)
+		get_tree().set_screen_stretch(1,1,Vector2(1024,600),1)
+		showAll()
+		zoomIn()
+		resume()
+		increaseScore(-1000)
+	else:
+		print("flappy started")
+		var inst = flappyGame.instance()
+		zoomOut()
+		hideAll()
+		pause()
+		add_child(inst)
+		activeMiniGame = true
+		inst.show()
 	
 func pause():
 	print("main maze paused called")
@@ -274,7 +291,7 @@ func resume():
 
 func setSnakeStatus(status):
 	snake_cleared = status
-	score_acc +=1
+	increaseScore(1000)
 	activeMiniGame = false
 
 func getSnakeStatus():
@@ -282,7 +299,7 @@ func getSnakeStatus():
 
 func setFlappyStatus(status):
 	flappy_cleared = status
-	score_acc +=1
+	increaseScore(1000)
 	activeMiniGame = false
 
 func getFlappyStatus():

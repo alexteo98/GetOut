@@ -1,10 +1,9 @@
-[gd_scene load_steps=7 format=2]
+[gd_scene load_steps=6 format=2]
 
 [ext_resource path="res://Assets/Fonts/new_dynamicfont.tres" type="DynamicFont" id=1]
 [ext_resource path="res://assets/Textures/Dark Green.PNG" type="Texture" id=2]
 [ext_resource path="res://assets/Textures/Light Green.PNG" type="Texture" id=3]
 [ext_resource path="res://src/script/menuSound.gd" type="Script" id=4]
-[ext_resource path="res://src/scene/SFX.tscn" type="PackedScene" id=5]
 [ext_resource path="res://assets/Textures/Dark Grey.PNG" type="Texture" id=6]
 
 [node name="Control" type="CanvasLayer"]
@@ -253,8 +252,6 @@ valign = 1
 __meta__ = {
 "_edit_use_anchors_": false
 }
-
-[node name="SFX" parent="." instance=ExtResource( 5 )]
 
 [connection signal="value_changed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider" to="." method="_on_HSlider_value_changed"]
 [connection signal="value_changed" from="VBoxContainer/VBoxContainer/HBoxContainer/VBoxContainer2/HSlider2" to="." method="_on_HSlider2_value_changed"]

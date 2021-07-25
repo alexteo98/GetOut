@@ -25,13 +25,13 @@ func _ready():
 
 
 func _on_TextureButton_pressed():
-	$SFX.play()
+	sounds.get_node("sfx_mouse_click").play()
 	yield(get_tree().create_timer(delay), "timeout")
 	PauseMenu.unhide()
 	SettingsMenu.close()
 
 func _on_CheckButton2_toggled(button_pressed):
-	$SFX.play()
+	sounds.get_node("sfx_mouse_click").play()
 	yield(get_tree().create_timer(delay), "timeout")
 	if (button_pressed==true):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"),false)
@@ -41,7 +41,7 @@ func _on_CheckButton2_toggled(button_pressed):
 func _on_CheckButton_toggled(button_pressed):
 	if (button_pressed==true):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),false)
-		$SFX.play()
+		sounds.get_node("sfx_mouse_click").play()
 		yield(get_tree().create_timer(delay), "timeout")
 	else:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"),true)
@@ -50,7 +50,7 @@ func _on_CheckButton_toggled(button_pressed):
 func _on_CheckButton3_toggled(button_pressed):
 	if (button_pressed==true):
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),false)
-		$SFX.play()
+		sounds.get_node("sfx_mouse_click").play()
 		yield(get_tree().create_timer(delay), "timeout")
 	else:
 		AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"),true)

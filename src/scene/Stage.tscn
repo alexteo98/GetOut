@@ -9,7 +9,7 @@
 [ext_resource path="res://src/script/instructions.gd" type="Script" id=7]
 [ext_resource path="res://font_score.ttf" type="DynamicFontData" id=8]
 [ext_resource path="res://src/script/lbl_score.gd" type="Script" id=9]
-[ext_resource path="res://src/scene/Stage.gd" type="Script" id=10]
+[ext_resource path="res://src/script/Stage.gd" type="Script" id=10]
 
 [sub_resource type="DynamicFont" id=1]
 size = 14

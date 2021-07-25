@@ -59,7 +59,7 @@ func move(direction):
 		los.cast_to = Vector2(99999, 0)
 		resetSpeed()
 		if player_spotted == true:
-			velocity.x += 600
+			velocity.x += 650
 		else:
 			velocity.x += 200
 	elif direction == 1: # move left
@@ -67,21 +67,21 @@ func move(direction):
 		los.cast_to = Vector2(-99999, 0)
 		resetSpeed()
 		if player_spotted == true:
-			velocity.x -= 600
+			velocity.x -= 650
 		else:
 			velocity.x -= 200
 	elif direction == 2: # move down
 		los.cast_to = Vector2(0, 99999)
 		resetSpeed()
 		if player_spotted == true:
-			velocity.y += 600
+			velocity.y += 650
 		else:
 			velocity.y += 200
 	else: # move up
 		resetSpeed()
 		los.cast_to = Vector2(0, -99999)
 		if player_spotted == true:
-			velocity.y -= 600
+			velocity.y -= 650
 		else:
 			velocity.y -= 200
 
@@ -105,6 +105,7 @@ func resetSpeed():
 
 func _on_Area2D_body_entered(body):
 	if body.name == "Player":
+		#print("MONSTER HIT PLAYER")
 		body.hit()
 	if body.name == "TileMap":
 		changeDirection()
